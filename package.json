@@ -6,7 +6,7 @@
 	"private": false,
 	"scripts": {
 		"docz:dev": "docz dev",
-		"docz:build": "docz build",
+		"docz:build": "docz build && cp ./favicon.ico .docz/dist",
 		"test:types": "tsc --noEmit",
 		"test:lint": "eslint 'src/**/*.{ts,tsx}'",
 		"test:prettier": "prettier --check 'src/**/*'"
