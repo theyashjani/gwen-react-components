@@ -1,0 +1,28 @@
+name: GH-Pages
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: GH-Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+      - name: Build & Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "gwennifer@insertcoin.se"
+          git config --global user.name "Gwennifer"
+          git remote set-url --push origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+          yarn install
+          git subtree add --prefix .docz/dist/ origin gh-pages
+          rm -rf .docz
+          git add .docz/dist
+          yarn docz:build
+          git add .docz/dist/* -f
+          git commit -m 'gh-pages update'
+          git subtree push --prefix .docz/dist origin gh-pages
