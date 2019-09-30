@@ -1,5 +1,9 @@
 import React from "react"
-import { getTheme, GlobalStyle, styled, ThemeProvider } from "."
+import styled, { ThemeProvider } from "styled-components"
+import { darkTheme } from "./dark"
+import { GlobalStyle } from "./global"
+import { ThemeInterface } from "./interface"
+import { lightTheme } from "./light"
 import { ThemeOptions } from "./options"
 
 interface Props {
@@ -20,6 +24,10 @@ export class ThemeComponent extends React.PureComponent<Props> {
 			</ThemeProvider>
 		)
 	}
+}
+
+export function getTheme(options: ThemeOptions): ThemeInterface {
+	return options.theme === "light" ? lightTheme(options) : darkTheme(options)
 }
 
 const GwenWrapper = styled.div`
