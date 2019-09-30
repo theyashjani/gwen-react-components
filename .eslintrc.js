@@ -31,5 +31,7 @@ module.exports = {
 		"jsx-a11y/no-static-element-interactions": "off",
 		"import/no-extraneous-dependencies": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
+		"react/jsx-props-no-spreading": "off",
+		"react/state-in-constructor": "off",
 	},
 }
