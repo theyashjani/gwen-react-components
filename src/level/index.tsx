@@ -1,6 +1,5 @@
 import React from "react"
-import { ThemeComponent } from "../theme/component"
-import { ThemeOptions } from "../theme/options"
+import { ThemeComponent, ThemeOptions } from "../theme"
 import { LevelAvatarData, LevelData, ModuleLevelUserBehaviorCooldownData } from "../types/level"
 import { LevelModule } from "./module"
 import { Profile } from "./profile"
