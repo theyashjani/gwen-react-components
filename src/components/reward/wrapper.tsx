@@ -1,5 +1,5 @@
 import React from "react"
-import { styled, ThemeInterface } from "../../theme"
+import styled, { DefaultTheme } from "styled-components"
 
 interface Props {
 	amount?: number
@@ -37,7 +37,7 @@ export class RewardWrapper extends React.PureComponent<Props, State> {
 }
 
 interface WrapperProps {
-	theme: ThemeInterface
+	theme: DefaultTheme
 	size: number
 	amount: boolean
 	background: string
@@ -45,25 +45,25 @@ interface WrapperProps {
 const Wrapper = styled.div`
 	position: relative;
 	margin: auto;
-	margin-top: ${(props: WrapperProps) => (props.amount ? `${props.size * 0.2}px` : "0")};
-	margin-bottom: ${(props: WrapperProps) => props.size * 0.3}px;
-	background: ${(props) => props.background};
+	margin-top: ${(p: WrapperProps) => (p.amount ? `${p.size * 0.2}px` : "0")};
+	margin-bottom: ${(p: WrapperProps) => p.size * 0.3}px;
+	background: ${(p) => p.background};
 	border-radius: 100%;
-	width: ${(props: WrapperProps) => props.size}px;
-	height: ${(props: WrapperProps) => props.size}px;
+	width: ${(p: WrapperProps) => p.size}px;
+	height: ${(p: WrapperProps) => p.size}px;
 	user-select: none;
 `
 interface SizeProps {
-	theme: ThemeInterface
+	theme: DefaultTheme
 	size: number
 }
 const Icon = styled.div`
 	padding: 17%;
-	height: ${(props: SizeProps) => props.size}px;
+	height: ${(p: SizeProps) => p.size}px;
 	svg {
 		display: block;
-		width: ${(props: SizeProps) => props.size / 1.5}px;
-		height: ${(props: SizeProps) => props.size / 1.5}px;
+		width: ${(p: SizeProps) => p.size / 1.5}px;
+		height: ${(p: SizeProps) => p.size / 1.5}px;
 	}
 `
 const Amount = styled.div`
@@ -74,21 +74,21 @@ const Amount = styled.div`
 	span {
 		display: inline-block;
 		margin: auto;
-		background: ${(props) => props.theme.colors.background.badge};
-		font-size: ${(props: SizeProps) => props.size * 0.175}px;
-		line-height: ${(props: SizeProps) => props.size * 0.2}px;
-		padding: ${(props: SizeProps) => props.size * 0.075}px ${(props) => props.size * 0.125}px;
-		border-radius: ${(props: SizeProps) => props.size * 0.075}px;
-		box-shadow: ${(props: SizeProps) => props.theme.boxShadow.default};
+		background: ${(p) => p.theme.colors.background.badge};
+		font-size: ${(p: SizeProps) => p.size * 0.175}px;
+		line-height: ${(p: SizeProps) => p.size * 0.2}px;
+		padding: ${(p: SizeProps) => p.size * 0.075}px ${(p) => p.size * 0.125}px;
+		border-radius: ${(p: SizeProps) => p.size * 0.075}px;
+		box-shadow: ${(p: SizeProps) => p.theme.boxShadow.default};
 	}
 `
 const Description = styled.div`
 	display: flex;
-	color: ${(props) => props.theme.colors.text.secondary};
-	font-size: ${(props: SizeProps) => props.size * 0.175}px;
-	line-height: ${(props: SizeProps) => props.size * 0.175}px;
+	color: ${(p) => p.theme.colors.text.secondary};
+	font-size: ${(p: SizeProps) => p.size * 0.175}px;
+	line-height: ${(p: SizeProps) => p.size * 0.175}px;
 	font-weight: 400;
-	margin-top: ${(props: SizeProps) => props.size * 0.075}px;
+	margin-top: ${(p: SizeProps) => p.size * 0.075}px;
 	text-transform: capitalize;
 	white-space: nowrap;
 	justify-content: center;
@@ -110,15 +110,15 @@ const EasterEgg = styled.i`
 		width: 0;
 		height: 0;
 		animation: eatAnimation 1s infinite;
-		border-left: ${(props: SizeProps) => props.size / 2}px solid transparent;
+		border-left: ${(p: SizeProps) => p.size / 2}px solid transparent;
 	}
 	&:before {
 		top: 50%;
-		border-top: 0 solid ${(props) => props.theme.colors.background.default};
+		border-top: 0 solid ${(p) => p.theme.colors.background.default};
 	}
 	&:after {
 		bottom: 50%;
-		border-bottom: 0 solid ${(props) => props.theme.colors.background.default};
+		border-bottom: 0 solid ${(p) => p.theme.colors.background.default};
 	}
 	@keyframes eatAnimation {
 		0% {
@@ -126,8 +126,8 @@ const EasterEgg = styled.i`
 			border-bottom-width: 0;
 		}
 		50% {
-			border-top-width: ${(props: SizeProps) => props.size / 2}px;
-			border-bottom-width: ${(props: SizeProps) => props.size / 2}px;
+			border-top-width: ${(p: SizeProps) => p.size / 2}px;
+			border-bottom-width: ${(p: SizeProps) => p.size / 2}px;
 		}
 		100% {
 			border-top-width: 0;

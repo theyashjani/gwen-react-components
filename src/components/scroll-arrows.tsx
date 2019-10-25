@@ -1,6 +1,6 @@
 import React from "react"
 import { ScrollParams } from "react-virtualized"
-import { styled, ThemeInterface } from "../theme"
+import styled, { DefaultTheme } from "styled-components"
 
 export class ScrollArrows extends React.PureComponent<Partial<ScrollParams>> {
 	showArrowTop() {
@@ -41,15 +41,15 @@ const ArrowBox = styled.div`
 	justify-content: center;
 	width: 100%;
 	height: 25px;
-	background: ${(props) => props.theme.colors.background.header};
-	box-shadow: ${(props) => props.theme.boxShadow.large};
+	background: ${(p) => p.theme.colors.background.header};
+	box-shadow: ${(p) => p.theme.boxShadow.large};
 	img {
 		height: 10px;
 	}
 `
 interface ArrowStyleType {
+	theme: DefaultTheme
 	show: boolean
-	theme: ThemeInterface
 }
 const ArrowStyle = styled.div`
 	pointer-events: none;
@@ -59,7 +59,7 @@ const ArrowStyle = styled.div`
 	width: 100%;
 	display: block;
 	transition: 0.5s ease-in-out;
-	opacity: ${(props: ArrowStyleType) => (props.show ? 1 : 0)};
+	opacity: ${(p: ArrowStyleType) => (p.show ? 1 : 0)};
 	height: 35px;
 	user-select: none;
 	overflow: hidden;

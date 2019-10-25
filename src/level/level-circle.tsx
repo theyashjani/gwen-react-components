@@ -1,6 +1,6 @@
 import React from "react"
+import styled, { DefaultTheme, withTheme } from "styled-components"
 import { Edit } from "../icons/edit"
-import { styled, ThemeInterface, withTheme } from "../theme"
 import { LevelAvatarData, LevelData } from "../types/level"
 import { LevelBadge } from "./level-badge"
 import { LevelTranslation } from "./translations"
@@ -8,7 +8,7 @@ import { LevelTranslation } from "./translations"
 type Props = {
 	translations: LevelTranslation
 	data: LevelData
-	theme: ThemeInterface
+	theme: DefaultTheme
 	size: number
 	avatar?: LevelAvatarData
 	selectAvatar?: () => void
@@ -84,28 +84,28 @@ export class LevelCircleComponent extends React.PureComponent<Props, State> {
 export const LevelCircle = withTheme(LevelCircleComponent)
 
 interface SizeType {
-	theme: ThemeInterface
+	theme: DefaultTheme
 	size: number
 }
 const LevelCircleWrapper = styled.div`
 	margin: auto;
 	position: relative;
 	border-radius: 100%;
-	width: ${(props: SizeType) => props.size}px;
-	height: ${(props: SizeType) => props.size}px;
+	width: ${(p: SizeType) => p.size}px;
+	height: ${(p: SizeType) => p.size}px;
 	z-index: 10;
-	margin-bottom: ${(props: SizeType) => props.size * 0.1}px;
+	margin-bottom: ${(p: SizeType) => p.size * 0.1}px;
 `
 const LevelPicture = styled.img`
 	position: absolute;
-	top: ${(props: SizeType) => props.size * 0.1}px;
-	left: ${(props: SizeType) => props.size * 0.1}px;
+	top: ${(p: SizeType) => p.size * 0.1}px;
+	left: ${(p: SizeType) => p.size * 0.1}px;
 	display: block;
-	width: ${(props: SizeType) => props.size * 0.8}px;
-	height: ${(props: SizeType) => props.size * 0.8}px;
+	width: ${(p: SizeType) => p.size * 0.8}px;
+	height: ${(p: SizeType) => p.size * 0.8}px;
 	border-radius: 100%;
-	border: ${(props: SizeType) => `${props.size * 0.05}px solid ${props.theme.colors.background.badge}`};
-	box-shadow: ${(props: SizeType) => props.theme.boxShadow.large};
+	border: ${(p: SizeType) => `${p.size * 0.05}px solid ${p.theme.colors.background.badge}`};
+	box-shadow: ${(p: SizeType) => p.theme.boxShadow.large};
 	overflow: hidden;
 `
 const LevelMeter = styled.svg`
@@ -133,15 +133,15 @@ const Level = styled.div`
 	span {
 		display: block;
 		color: #fff;
-		line-height: ${(props: SizeType) => props.size * 0.05}px;
-		font-size: ${(props: SizeType) => props.size * 0.05}px;
+		line-height: ${(p: SizeType) => p.size * 0.05}px;
+		font-size: ${(p: SizeType) => p.size * 0.05}px;
 		text-transform: uppercase;
 	}
 	b {
 		display: block;
 		color: #fff;
-		line-height: ${(props: SizeType) => props.size * 0.2}px;
-		font-size: ${(props: SizeType) => props.size * 0.2}px;
+		line-height: ${(p: SizeType) => p.size * 0.2}px;
+		font-size: ${(p: SizeType) => p.size * 0.2}px;
 	}
 	> div {
 		position: absolute;
@@ -154,26 +154,25 @@ const Level = styled.div`
 `
 const EditButton = styled.div`
 	position: absolute;
-	top: -${(props: SizeType) => props.size * 0.1}px;
-	right: -${(props: SizeType) => props.size * 0.19}px;
+	top: -${(p: SizeType) => p.size * 0.1}px;
+	right: -${(p: SizeType) => p.size * 0.19}px;
 	cursor: pointer;
-	padding: ${(props: SizeType) => props.size * 0.03}px ${(props: SizeType) => props.size * 0.03}px ${(props: SizeType) => props.size * 0.04}px
-		${(props: SizeType) => props.size * 0.04}px;
-	height: ${(props: SizeType) => props.size * 0.19}px;
-	width: ${(props: SizeType) => props.size * 0.19}px;
+	padding: ${(p: SizeType) => p.size * 0.03}px ${(p: SizeType) => p.size * 0.03}px ${(p: SizeType) => p.size * 0.04}px ${(p: SizeType) => p.size * 0.04}px;
+	height: ${(p: SizeType) => p.size * 0.19}px;
+	width: ${(p: SizeType) => p.size * 0.19}px;
 	border-radius: 100%;
-	background: ${(props: SizeType) => props.theme.colors.background.header};
-	box-shadow: ${(props: SizeType) => props.size * 0.0125}px 0 ${(props: SizeType) => props.size * 0.03}px 0 ${(props: SizeType) => props.theme.boxShadow.color};
+	background: ${(p: SizeType) => p.theme.colors.background.header};
+	box-shadow: ${(p: SizeType) => p.size * 0.0125}px 0 ${(p: SizeType) => p.size * 0.03}px 0 ${(p: SizeType) => p.theme.boxShadow.color};
 
 	> svg {
-		stroke: ${(props: SizeType) => props.theme.colors.text.secondary};
-		fill: ${(props: SizeType) => props.theme.colors.text.secondary};
+		stroke: ${(p: SizeType) => p.theme.colors.text.secondary};
+		fill: ${(p: SizeType) => p.theme.colors.text.secondary};
 	}
 	&:hover {
-		background: ${(props: SizeType) => props.theme.colors.text.primary};
+		background: ${(p: SizeType) => p.theme.colors.text.primary};
 		> svg {
-			stroke: ${(props: SizeType) => props.theme.colors.text.success};
-			fill: ${(props: SizeType) => props.theme.colors.text.success};
+			stroke: ${(p: SizeType) => p.theme.colors.text.success};
+			fill: ${(p: SizeType) => p.theme.colors.text.success};
 		}
 	}
 `

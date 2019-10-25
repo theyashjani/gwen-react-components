@@ -1,5 +1,5 @@
 import React from "react"
-import { styled } from "../../theme"
+import styled from "styled-components"
 import { RewardData } from "../../types/level"
 import { RewardIcons } from "./icons"
 

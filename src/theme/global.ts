@@ -1,7 +1,6 @@
-import { createGlobalStyle } from "styled-components"
-import { ThemeInterface } from "./interface"
+import { createGlobalStyle, DefaultTheme } from "styled-components"
 
-export const GlobalStyle = (theme: ThemeInterface) => createGlobalStyle`
+export const GlobalStyle = (theme: DefaultTheme) => createGlobalStyle`
 	.gwen * {
 		box-sizing: border-box;
 	}

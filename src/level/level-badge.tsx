@@ -1,10 +1,10 @@
 import React from "react"
+import styled from "styled-components"
 import { LevelIcon01 } from "../icons/level/01"
 import { LevelIcon02 } from "../icons/level/02"
 import { LevelIcon03 } from "../icons/level/03"
 import { LevelIcon04 } from "../icons/level/04"
 import { Stars } from "../icons/level/stars"
-import { styled } from "../theme"
 
 interface Color {
 	name: string
@@ -61,11 +61,11 @@ const Badge = styled.div`
 	.badge-titanium {
 		display: none;
 	}
-	.badge-${(props: BadgeType) => props.badge.name} {
+	.badge-${(p: BadgeType) => p.badge.name} {
 		display: block;
 	}
-	${(props: BadgeType) =>
-		props.badge.colors.map(
+	${(p: BadgeType) =>
+		p.badge.colors.map(
 			(c, index) => `
 		.badge-color-${index + 1}-fill { fill: ${c}; }
 		.badge-color-${index + 1}-stroke { stroke: ${c}; }
@@ -80,7 +80,7 @@ const Badge = styled.div`
 	div:nth-child(1) {
 		height: 160px;
 	}
-	.level-stars .star-${(props: BadgeType) => props.stars} {
+	.level-stars .star-${(p: BadgeType) => p.stars} {
 		display: block;
 	}
 `

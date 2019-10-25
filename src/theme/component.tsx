@@ -1,8 +1,7 @@
 import React from "react"
-import styled, { ThemeProvider } from "styled-components"
+import styled, { DefaultTheme, ThemeProvider } from "styled-components"
 import { darkTheme } from "./dark"
 import { GlobalStyle } from "./global"
-import { ThemeInterface } from "./interface"
 import { lightTheme } from "./light"
 import { ThemeOptions } from "./options"
 
@@ -26,7 +25,7 @@ export class ThemeComponent extends React.PureComponent<Props> {
 	}
 }
 
-export function getTheme(options: ThemeOptions): ThemeInterface {
+export function getTheme(options: ThemeOptions): DefaultTheme {
 	return options.theme === "light" ? lightTheme(options) : darkTheme(options)
 }
 

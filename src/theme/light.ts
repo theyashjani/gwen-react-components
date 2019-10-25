@@ -1,7 +1,7 @@
-import { ThemeInterface } from "./interface"
+import { DefaultTheme } from "styled-components"
 import { ThemeOptions } from "./options"
 
-export const lightTheme = (options: ThemeOptions): ThemeInterface => ({
+export const lightTheme = (options: ThemeOptions): DefaultTheme => ({
 	fontFamily: options.fontFamily || "Lato",
 	fontFamilyUrl: options.fontFamilyUrl || "https://fonts.googleapis.com/css?family=Lato:300,400,700",
 	colors: {

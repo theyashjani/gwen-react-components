@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file, react/no-multi-comp */
 import React from "react"
-import { styled, ThemeInterface } from "../theme"
+import styled, { DefaultTheme } from "styled-components"
 
 interface ModuleWrapperProps {
 	title?: JSX.Element
@@ -134,7 +134,7 @@ const TabsWrapperElements = styled.div`
 `
 
 interface TabProps {
-	theme: ThemeInterface
+	theme: DefaultTheme
 	active: boolean
 }
 

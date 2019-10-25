@@ -1,6 +1,6 @@
 import React from "react"
+import styled from "styled-components"
 import { Rewards } from "../components/reward"
-import { styled } from "../theme"
 import { LevelAvatarData, LevelData } from "../types/level"
 import { LevelCircle } from "./level-circle"
 import { LevelTranslation } from "./translations"

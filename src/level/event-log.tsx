@@ -1,7 +1,7 @@
 import React from "react"
 import { AutoSizer, Index, List, ScrollParams } from "react-virtualized"
+import styled, { DefaultTheme } from "styled-components"
 import { ScrollArrows } from "../components/scroll-arrows"
-import { styled, ThemeInterface } from "../theme"
 import { LevelLog, ModuleType } from "../types/level"
 
 type Props = {
@@ -137,7 +137,7 @@ const EventLogHeader = styled.div`
 	}
 `
 interface ExpandedType {
-	theme: ThemeInterface
+	theme: DefaultTheme
 	expanded: boolean
 	button?: boolean
 }

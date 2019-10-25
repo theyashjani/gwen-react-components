@@ -1,7 +1,7 @@
 import React from "react"
 import { AutoSizer, List, ScrollParams } from "react-virtualized"
+import styled from "styled-components"
 import { ScrollArrows } from "../components/scroll-arrows"
-import { styled } from "../theme"
 import { LevelAvatarData } from "../types/level"
 
 export interface SelectAvatarProps {
