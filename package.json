@@ -1,10 +1,11 @@
 {
 	"name": "@insertcoinab/gwen-react-components",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"repository": "https://github.com/InsertCoinAB/gwen-react-components",
 	"license": "MIT",
 	"private": false,
 	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"module": "dist/index.js",
 	"files": [
 		"package.json",
@@ -15,10 +16,18 @@
 	"scripts": {
 		"docz:dev": "docz dev",
 		"docz:build": "docz build && cp ./favicon.ico .docz/dist",
-		"build": "rm -rf dist && NODE_ENV=production babel src --extensions '.ts,.tsx' --out-dir dist --copy-files --ignore spec.ts",
+		"build": "rm -rf dist && yarn build:ts && yarn build:types",
+		"build:ts": "NODE_ENV=production babel src --extensions '.ts,.tsx' --out-dir dist --copy-files --ignore spec.ts",
+		"build:types": "tsc --emitDeclarationOnly --skipLibCheck",
 		"test:types": "tsc --noEmit",
 		"test:lint": "eslint 'src/**/*.{ts,tsx}'",
 		"test:prettier": "prettier --check 'src/**/*'"
+	},
+	"dependencies": {
+		"react": "^16.11.0",
+		"react-dom": "^16.11.0",
+		"react-virtualized": "^9.21.1",
+		"styled-components": "^4.4.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.6.4",
@@ -40,12 +49,8 @@
 		"eslint-plugin-unicorn": "^12.1.0",
 		"jest": "^24.9.0",
 		"prettier": "^1.18.2",
-		"react": "^16.11.0",
 		"react-docgen-typescript-loader": "^3.3.0",
-		"react-dom": "^16.11.0",
 		"react-scripts": "3.2.0",
-		"react-virtualized": "^9.21.1",
-		"styled-components": "^4.4.0",
 		"trim-right": "^1.0.1",
 		"typescript": "3.6.4"
 	}
