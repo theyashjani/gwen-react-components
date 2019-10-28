@@ -1,6 +1,6 @@
 {
-	"name": "gwen-react-components",
-	"version": "0.0.2",
+	"name": "@insertcoinab/gwen-react-components",
+	"version": "0.0.4",
 	"repository": "https://github.com/InsertCoinAB/gwen-react-components",
 	"license": "MIT",
 	"private": false,
