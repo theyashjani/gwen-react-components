@@ -1,12 +1,21 @@
 {
 	"name": "gwen-react-components",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"repository": "https://github.com/InsertCoinAB/gwen-react-components",
 	"license": "MIT",
 	"private": false,
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"files": [
+		"package.json",
+		"LICENSE",
+		"dist",
+		"README.md"
+	],
 	"scripts": {
 		"docz:dev": "docz dev",
 		"docz:build": "docz build && cp ./favicon.ico .docz/dist",
+		"build": "rm -rf dist && NODE_ENV=production babel src --extensions '.ts,.tsx' --out-dir dist --copy-files --ignore spec.ts",
 		"test:types": "tsc --noEmit",
 		"test:lint": "eslint 'src/**/*.{ts,tsx}'",
 		"test:prettier": "prettier --check 'src/**/*'"
