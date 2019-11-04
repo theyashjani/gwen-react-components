@@ -1,6 +1,7 @@
 /* eslint-disable max-classes-per-file, react/no-multi-comp */
 import React from "react"
 import styled, { DefaultTheme } from "styled-components"
+import { Theme } from "../theme"
 
 interface ModuleWrapperProps {
 	title?: JSX.Element
@@ -80,7 +81,7 @@ const ModuleWrapperOuter = styled.div`
 	display: flex;
 	height: 100%;
 	padding: 1%;
-	background: ${(p) => p.theme.colors.background.backdrop};
+	background: ${Theme.colors.background.backdrop};
 `
 
 const ModuleWrapperFullDiv = styled.div`
@@ -88,7 +89,7 @@ const ModuleWrapperFullDiv = styled.div`
 	margin-right: 0.5%;
 	height: 100%;
 	width: 100%;
-	background: ${(p) => p.theme.colors.background.default};
+	background: ${Theme.colors.background.default};
 	overflow: hidden;
 `
 const ModuleWrapperLeftDiv = styled.div`
@@ -96,7 +97,7 @@ const ModuleWrapperLeftDiv = styled.div`
 	height: 100%;
 	flex: 1;
 	margin-right: 0.5%;
-	background: ${(p) => p.theme.colors.background.default};
+	background: ${Theme.colors.background.default};
 	overflow: hidden;
 `
 const ModuleWrapperRightDiv = styled.div`
@@ -104,17 +105,17 @@ const ModuleWrapperRightDiv = styled.div`
 	height: 100%;
 	flex: 1;
 	margin-left: 0.5%;
-	background: ${(p) => p.theme.colors.background.default};
+	background: ${Theme.colors.background.default};
 	overflow: hidden;
 `
 
 const WrapperTitle = styled.div`
-	background: ${(p) => p.theme.colors.background.header};
+	background: ${Theme.colors.background.header};
 	line-height: 55px;
 	font-size: 20px;
 	text-align: center;
 	font-weight: bold;
-	border-bottom: ${(p) => p.theme.border.default};
+	border-bottom: ${Theme.border.default};
 	text-transform: capitalize;
 	margin: 0;
 `
@@ -142,9 +143,9 @@ const Tab = styled.div`
 	line-height: 55px;
 	position: ${(p: TabProps) => (p.active ? `relative` : ``)};
 	box-shadow: ${(p: TabProps) => (p.active ? `3px 0 6px rgba(50, 50, 50, 0.5), -3px 0 6px rgba(50, 50, 50, 0.5)` : ``)};
-	border: ${(p: TabProps) => (!p.active ? p.theme.border.default : ``)};
+	border: ${(p: TabProps) => (!p.active ? Theme.border.default : ``)};
 	cursor: ${(p: TabProps) => (!p.active ? `pointer` : ``)};
 	flex: 1;
 	overflow: hidden;
-	background-color: ${(p: TabProps) => (p.active ? p.theme.colors.background.default : p.theme.colors.background.header)};
+	background-color: ${(p: TabProps) => (p.active ? Theme.colors.background.default : Theme.colors.background.header)};
 `

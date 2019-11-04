@@ -1,6 +1,7 @@
 import React from "react"
 import { ScrollParams } from "react-virtualized"
 import styled, { DefaultTheme } from "styled-components"
+import { Theme } from "../theme"
 
 export class ScrollArrows extends React.PureComponent<Partial<ScrollParams>> {
 	showArrowTop() {
@@ -41,8 +42,8 @@ const ArrowBox = styled.div`
 	justify-content: center;
 	width: 100%;
 	height: 25px;
-	background: ${(p) => p.theme.colors.background.header};
-	box-shadow: ${(p) => p.theme.boxShadow.large};
+	background: ${Theme.colors.background.header};
+	box-shadow: ${Theme.boxShadow.large};
 	img {
 		height: 10px;
 	}

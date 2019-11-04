@@ -1,9 +1,8 @@
-import { DefaultTheme } from "styled-components"
+import { DefaultTheme } from "./default"
 import { ThemeOptions } from "./options"
 
 export const lightTheme = (options: ThemeOptions): DefaultTheme => ({
 	fontFamily: options.fontFamily || "Lato",
-	fontFamilyUrl: options.fontFamilyUrl || "https://fonts.googleapis.com/css?family=Lato:300,400,700",
 	colors: {
 		primary: options.primaryColor || "#ff5e5e",
 		secondary: options.secondaryColor || "#545454",

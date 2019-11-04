@@ -5,7 +5,7 @@ menu: Level
 ---
 
 import { Playground, Props } from "docz"
-import { LevelModuleComponent } from "../../src"
+import { LevelModuleComponent, Theme } from "../../src"
 import { LogData, RewardData } from "./data"
 
 # Module Component
@@ -21,9 +21,9 @@ Use this component in Embedded views
 				totalXp: 10231,
 				levelXp: 1100,
 				levelUp: false,
-				log: LogData,
 				rewards: RewardData,
 			}}
+			log={LogData}
 			avatar={{
 				url: "https://storage.googleapis.com/gwen-prod-storage/avatar-packages/default/01.svg",
 				colors: { background: "#98ca9d", shirt: "#55ab59" },

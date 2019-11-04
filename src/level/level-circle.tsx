@@ -1,26 +1,31 @@
 import React from "react"
-import styled, { DefaultTheme, withTheme } from "styled-components"
+import styled from "styled-components"
 import { Edit } from "../icons/edit"
+import { Theme } from "../theme"
 import { LevelAvatarData, LevelData } from "../types/level"
 import { LevelBadge } from "./level-badge"
 import { LevelTranslation } from "./translations"
 
 type Props = {
 	translations: LevelTranslation
-	data: LevelData
-	theme: DefaultTheme
+	data?: LevelData
 	size: number
 	avatar?: LevelAvatarData
+	badge?: boolean
 	selectAvatar?: () => void
 }
 interface State {
 	circleTransition?: "full" | "empty"
 }
-export class LevelCircleComponent extends React.PureComponent<Props, State> {
+export class LevelCircle extends React.PureComponent<Props, State> {
+	/* eslint-disable-next-line react/static-property-placement */
+	static defaultProps: Partial<Props> = {
+		badge: true,
+	}
 	state: State = { circleTransition: undefined }
 
 	UNSAFE_componentWillReceiveProps(nextProps: Readonly<Props>) {
-		if (nextProps.data.levelUp && !this.props.data.levelUp) {
+		if (nextProps.data && this.props.data && nextProps.data.levelUp && !this.props.data.levelUp) {
 			this.setState({ circleTransition: "full" })
 			setTimeout(() => this.setState({ circleTransition: "empty" }), 1000)
 			setTimeout(() => this.setState({ circleTransition: undefined }), 2000)
@@ -32,28 +37,31 @@ export class LevelCircleComponent extends React.PureComponent<Props, State> {
 	}
 
 	progress() {
+		if (!this.props.data) {
+			return 0
+		}
 		const { level, currentXp, levelXp } = this.props.data
 		return level && level > 0 ? (currentXp / levelXp) * 100 : 0
 	}
 
 	render() {
-		const { translations, theme } = this.props
+		const { translations } = this.props
 		const radius = 40
-		const missing = 0.12
+		const missing = this.props.badge ? 0.12 : 0
 		let progress = this.progress() / 100
 		if (this.state.circleTransition) {
 			progress = this.state.circleTransition === "full" ? 1 : 0
 		}
 		return (
-			<LevelCircleWrapper size={this.props.size}>
+			<LevelCircleWrapper size={this.props.size} badge={this.props.badge}>
 				<LevelMeter width={`${this.props.size}px`} height={`${this.props.size}px`} viewBox="-50 -50 100 100">
 					<defs>
 						<linearGradient id="gradient" gradientTransform="rotate(45)">
-							<stop offset="0%" stopColor={this.props.avatar && this.props.avatar.colors ? this.props.avatar.colors.shirt : theme.colors.text.primary} />
-							<stop offset="100%" stopColor={this.props.avatar && this.props.avatar.colors ? this.props.avatar.colors.background : theme.colors.text.primary} />
+							<stop offset="0%" stopColor={this.props.avatar && this.props.avatar.colors ? this.props.avatar.colors.shirt : Theme.colors.text.primary} />
+							<stop offset="100%" stopColor={this.props.avatar && this.props.avatar.colors ? this.props.avatar.colors.background : Theme.colors.text.primary} />
 						</linearGradient>
 					</defs>
-					<circle r={radius} fill="none" strokeWidth="20" stroke={theme.colors.inactive} />
+					<circle r={radius} fill="none" strokeWidth="20" stroke={Theme.colors.inactive} />
 					<circle
 						transform={`rotate(${180 + missing * 180})`}
 						r={radius}
@@ -66,11 +74,11 @@ export class LevelCircleComponent extends React.PureComponent<Props, State> {
 					/>
 				</LevelMeter>
 				<LevelPicture size={this.props.size} src={this.props.avatar && this.props.avatar.url} />
-				<Level size={this.props.size}>
-					<span>{translations.level}</span>
-					<b data-cy="level-number">{this.props.data.level}</b>
-					{this.props.data.level && <LevelBadge level={this.props.data.level} />}
-				</Level>
+				{this.props.badge && (
+					<LevelBadgeWrapper size={this.props.size}>
+						{this.props.data && this.props.data.level && <LevelBadge level={this.props.data.level} size={this.props.size} text={translations.level} />}
+					</LevelBadgeWrapper>
+				)}
 				{this.props.selectAvatar && (
 					<EditButton size={this.props.size} onClick={() => this.props.selectAvatar && this.props.selectAvatar()}>
 						<Edit />
@@ -81,20 +89,14 @@ export class LevelCircleComponent extends React.PureComponent<Props, State> {
 	}
 }
 
-export const LevelCircle = withTheme(LevelCircleComponent)
-
-interface SizeType {
-	theme: DefaultTheme
-	size: number
-}
+type SizeType = { size: number }
 const LevelCircleWrapper = styled.div`
 	margin: auto;
 	position: relative;
 	border-radius: 100%;
 	width: ${(p: SizeType) => p.size}px;
-	height: ${(p: SizeType) => p.size}px;
+	height: ${(p: SizeType & { badge?: boolean }) => p.size * (p.badge ? 1.5 : 1)}px;
 	z-index: 10;
-	margin-bottom: ${(p: SizeType) => p.size * 0.1}px;
 `
 const LevelPicture = styled.img`
 	position: absolute;
@@ -104,8 +106,8 @@ const LevelPicture = styled.img`
 	width: ${(p: SizeType) => p.size * 0.8}px;
 	height: ${(p: SizeType) => p.size * 0.8}px;
 	border-radius: 100%;
-	border: ${(p: SizeType) => `${p.size * 0.05}px solid ${p.theme.colors.background.badge}`};
-	box-shadow: ${(p: SizeType) => p.theme.boxShadow.large};
+	border: ${(p: SizeType) => `${p.size * 0.05}px solid ${Theme.colors.background.badge}`};
+	box-shadow: ${Theme.boxShadow.large};
 	overflow: hidden;
 `
 const LevelMeter = styled.svg`
@@ -117,40 +119,13 @@ const LevelMeter = styled.svg`
 	transform: rotateZ(-90deg);
 `
 
-const Level = styled.div`
+const LevelBadgeWrapper = styled.div`
 	position: absolute;
 	z-index: 1;
-	top: 50%;
+	top: ${(p: SizeType) => p.size * 0.57}px;
 	left: 0;
 	width: 100%;
-	height: 100%;
-	border-radius: 100%;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	span {
-		display: block;
-		color: #fff;
-		line-height: ${(p: SizeType) => p.size * 0.05}px;
-		font-size: ${(p: SizeType) => p.size * 0.05}px;
-		text-transform: uppercase;
-	}
-	b {
-		display: block;
-		color: #fff;
-		line-height: ${(p: SizeType) => p.size * 0.2}px;
-		font-size: ${(p: SizeType) => p.size * 0.2}px;
-	}
-	> div {
-		position: absolute;
-		top: 8%;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-	}
+	height: ${(p: SizeType) => p.size}px;
 `
 const EditButton = styled.div`
 	position: absolute;
@@ -161,18 +136,18 @@ const EditButton = styled.div`
 	height: ${(p: SizeType) => p.size * 0.19}px;
 	width: ${(p: SizeType) => p.size * 0.19}px;
 	border-radius: 100%;
-	background: ${(p: SizeType) => p.theme.colors.background.header};
-	box-shadow: ${(p: SizeType) => p.size * 0.0125}px 0 ${(p: SizeType) => p.size * 0.03}px 0 ${(p: SizeType) => p.theme.boxShadow.color};
+	background: ${Theme.colors.background.header};
+	box-shadow: ${(p: SizeType) => p.size * 0.0125}px 0 ${(p: SizeType) => p.size * 0.03}px 0 ${Theme.boxShadow.color};
 
 	> svg {
-		stroke: ${(p: SizeType) => p.theme.colors.text.secondary};
-		fill: ${(p: SizeType) => p.theme.colors.text.secondary};
+		stroke: ${Theme.colors.text.secondary};
+		fill: ${Theme.colors.text.secondary};
 	}
 	&:hover {
-		background: ${(p: SizeType) => p.theme.colors.text.primary};
+		background: ${Theme.colors.text.primary};
 		> svg {
-			stroke: ${(p: SizeType) => p.theme.colors.text.success};
-			fill: ${(p: SizeType) => p.theme.colors.text.success};
+			stroke: ${Theme.colors.text.success};
+			fill: ${Theme.colors.text.success};
 		}
 	}
 `

@@ -34,16 +34,18 @@ const badgeColors: Color[] = [
 ]
 const badgeSvgs = [LevelIcon01, LevelIcon02, LevelIcon03, LevelIcon04]
 
-export function LevelBadge(props: { level: number }) {
+export function LevelBadge(props: { level: number; size: number; text: string }) {
 	const colors = props.level <= 100 ? badgeColors[Math.floor(((props.level - 1) / 5) % 5)] : badgeColors[4]
 	const stars = ((props.level - 1) % 5) + 1
 	let LevelIcon = badgeSvgs[Math.floor((props.level - 1) / 25)]
 	LevelIcon = LevelIcon || badgeSvgs[badgeSvgs.length - 1]
 
 	return (
-		<Badge stars={stars} badge={colors}>
+		<Badge stars={stars} badge={colors} size={props.size}>
 			<LevelIcon />
 			<Stars className="level-stars" style={{ display: "block", position: "absolute", top: "56%", height: "40%" }} />
+			<span>{props.text}</span>
+			<b data-cy="level-number">{props.level}</b>
 		</Badge>
 	)
 }
@@ -51,9 +53,38 @@ export function LevelBadge(props: { level: number }) {
 interface BadgeType {
 	stars: number
 	badge: Color
+	size: number
 }
-
 const Badge = styled.div`
+	position: relative;
+	height: ${(p: BadgeType) => p.size}px;
+	width: ${(p: BadgeType) => p.size}px;
+	border-radius: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	span {
+		position: absolute;
+		top: 30%;
+		width: 100%;
+		display: block;
+		color: #fff;
+		line-height: ${(p: BadgeType) => p.size * 0.05}px;
+		font-size: ${(p: BadgeType) => p.size * 0.05}px;
+		text-transform: uppercase;
+	}
+	b {
+		position: absolute;
+		top: 35%;
+		width: 100%;
+		display: block;
+		color: #fff;
+		line-height: ${(p: BadgeType) => p.size * 0.2}px;
+		font-size: ${(p: BadgeType) => p.size * 0.2}px;
+	}
+
 	.badge-iron,
 	.badge-bronze,
 	.badge-silver,

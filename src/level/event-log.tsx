@@ -2,6 +2,7 @@ import React from "react"
 import { AutoSizer, Index, List, ScrollParams } from "react-virtualized"
 import styled, { DefaultTheme } from "styled-components"
 import { ScrollArrows } from "../components/scroll-arrows"
+import { Theme } from "../theme"
 import { LevelLog, ModuleType } from "../types/level"
 
 type Props = {
@@ -105,17 +106,17 @@ export class EventLog extends React.Component<Props, State> {
 const Wrapper = styled.div`
 	position: relative;
 	height: 100%;
-	background: ${(p) => p.theme.colors.background.default};
+	background: ${Theme.colors.background.default};
 `
 const EventLogWrapper = styled.div`
 	display: block;
 	font-size: 15px;
 	margin: 10px;
-	box-shadow: ${(p) => p.theme.boxShadow.default};
+	box-shadow: ${Theme.boxShadow.default};
 `
 const EventLogHeader = styled.div`
-	background: ${(p) => p.theme.colors.background.header};
-	border-bottom: 1px solid ${(p) => p.theme.colors.divider};
+	background: ${Theme.colors.background.header};
+	border-bottom: 1px solid ${Theme.colors.divider};
 	display: flex;
 	padding: 8px 12px;
 	line-height: 16px;
@@ -131,7 +132,7 @@ const EventLogHeader = styled.div`
 		}
 		&:nth-child(2) {
 			text-align: right;
-			color: ${(p) => p.theme.colors.text.secondary};
+			color: ${Theme.colors.text.secondary};
 			flex: 1;
 		}
 	}
@@ -150,19 +151,19 @@ const EventLogBody = styled.div`
 		}
 		return 0
 	}}px;
-	background: ${(p: ExpandedType) => p.theme.colors.background.default};
-	border-bottom: ${(p: ExpandedType) => (p.expanded ? 1 : 0)}px solid ${(p) => p.theme.colors.divider};
+	background: ${Theme.colors.background.default};
+	border-bottom: ${(p: ExpandedType) => (p.expanded ? 1 : 0)}px solid ${Theme.colors.divider};
 `
 const EventLogBodyDate = styled.div`
-	color: ${(p) => p.theme.colors.text.secondary};
+	color: ${Theme.colors.text.secondary};
 	font-size: 14px;
 	padding: 8px 12px;
 	text-align: center;
 `
 const EventLogExpand = styled.div`
 	height: ${(p: ExpandedType) => 20}px;
-	background: ${(p: ExpandedType) => p.theme.colors.background.header};
-	color: ${(p: ExpandedType) => p.theme.colors.secondary};
+	background: ${Theme.colors.background.header};
+	color: ${Theme.colors.secondary};
 	transform: ${(p: ExpandedType) => (p.expanded ? "rotate(180deg)" : "")};
 	cursor: pointer;
 	text-align: center;

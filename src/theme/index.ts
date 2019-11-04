@@ -1,3 +1,5 @@
 export * from "./component"
+export * from "./default"
 export * from "./global"
 export * from "./options"
+export * from "./theme"

@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react"
 import styled from "styled-components"
+import { Theme } from "../theme"
 import { SECOND_MS } from "../types/clock"
 import { dateDHMS } from "../types/date-dhms"
 import { ModuleLevelUserBehaviorCooldownData } from "../types/level"
@@ -64,10 +65,10 @@ export class CooldownLogItem extends PureComponent<Props, State> {
 const CooldownLogWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
-	background: ${(p) => p.theme.colors.background.header};
+	background: ${Theme.colors.background.header};
 	margin: 10px;
 	padding: 8px 12px;
-	box-shadow: ${(p) => p.theme.boxShadow.default};
+	box-shadow: ${Theme.boxShadow.default};
 `
 
 const CooldownTitle = styled.div`
@@ -76,5 +77,5 @@ const CooldownTitle = styled.div`
 `
 
 const CooldownTime = styled.div`
-	color: ${(p) => p.theme.colors.text.secondary};
+	color: ${Theme.colors.text.secondary};
 `

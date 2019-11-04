@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Theme } from "../../theme"
 import { RewardData } from "../../types/level"
 import { RewardIcons } from "./icons"
 
@@ -39,8 +40,8 @@ const RewardText = styled.div`
 	line-height: 35px;
 	font-weight: 400;
 	padding: 0 20px;
-	border-top: ${(p) => p.theme.border.default};
-	border-bottom: ${(p) => p.theme.border.default};
+	border-top: ${Theme.border.default};
+	border-bottom: ${Theme.border.default};
 `
 const Upgrade = styled.div`
 	height: 135px;

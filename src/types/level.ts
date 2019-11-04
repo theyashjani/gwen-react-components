@@ -55,6 +55,6 @@ export type LevelData = {
 	totalXp: number
 	levelXp: number
 	levelUp: boolean
-	log: []
-	rewards: []
+	log: LevelLog
+	rewards: RewardData[]
 }

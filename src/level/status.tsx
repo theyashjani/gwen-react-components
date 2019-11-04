@@ -1,13 +1,13 @@
 import React from "react"
 import { TabsWrapper } from "../components/wrapper"
-import { LevelData, ModuleLevelUserBehaviorCooldownData } from "../types/level"
+import { LevelLog, ModuleLevelUserBehaviorCooldownData } from "../types/level"
 import { CooldownLog } from "./cooldown-log"
 import { EventLog } from "./event-log"
 import { LevelTranslation } from "./translations"
 
 export interface StatusProps {
 	translations: LevelTranslation
-	log: LevelData["log"]
+	log: LevelLog[]
 	cooldowns?: ModuleLevelUserBehaviorCooldownData[]
 }
 
