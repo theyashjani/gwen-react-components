@@ -57,7 +57,7 @@ export function LevelSelectAvatarComponent(props: LevelSelectAvatarProps) {
 	const { scale, ...restprops } = props
 	return (
 		<WrapperComponent scale={scale}>
-			<SelectAvatar {...restprops} />
+			<SelectAvatar {...restprops} scale={scale || 1} />
 		</WrapperComponent>
 	)
 }

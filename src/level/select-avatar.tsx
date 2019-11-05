@@ -9,6 +9,7 @@ export interface SelectAvatarProps {
 	select: (avatar: LevelAvatarData) => void
 	closeModal: () => void
 	avatars: LevelAvatarData[]
+	scale: number
 }
 interface State {
 	scrollParams?: ScrollParams
@@ -28,7 +29,7 @@ export class SelectAvatar extends React.PureComponent<SelectAvatarProps, State> 
 							containerStyle={{ width: `${width}px` }}
 							height={height}
 							width={width + 20}
-							rowHeight={186}
+							rowHeight={186 * this.props.scale}
 							rowCount={Math.ceil(this.props.avatars.length / 2)}
 							onScroll={(scrollParams: ScrollParams) => this.setState({ scrollParams })}
 							rowRenderer={(item) => {
@@ -72,16 +73,16 @@ export class SelectAvatar extends React.PureComponent<SelectAvatarProps, State> 
 
 const Avatar = styled.div`
 	position: relative;
-	width: calc(50% - 30px);
-	max-width: 156px;
-	height: 156px;
+	width: ${(p) => `calc(50% - ${p.theme.proportions(30)}px)`};
+	max-width: ${(p) => p.theme.proportions(156)}px;
+	height: ${(p) => p.theme.proportions(156)}px;
 
-	border: 10px solid ${(p) => p.theme.gwen.colors.background.backdrop};
+	border: ${(p) => p.theme.proportions(10)}px solid ${(p) => p.theme.gwen.colors.background.backdrop};
 	border-radius: 100%;
 	transition: 0.2s ease-in-out;
 	cursor: pointer;
 	box-shadow: ${(p) => p.theme.gwen.boxShadow.default};
-	margin: 0 15px;
+	margin: 0 ${(p) => p.theme.proportions(15)}px;
 	img {
 		display: block;
 		border-radius: 100%;
@@ -91,19 +92,19 @@ const Avatar = styled.div`
 	}
 `
 const EmptyAvatar = styled.div`
-	width: calc(50% - 30px);
-	max-width: 156px;
-	height: 156px;
+	width: ${(p) => `calc(50% - ${p.theme.proportions(30)}px)`};
+	max-width: ${(p) => p.theme.proportions(156)}px;
+	height: ${(p) => p.theme.proportions(156)}px;
 `
 const AvatarCheck = styled.div`
 	position: absolute;
-	top: -5px;
+	top: -${(p) => p.theme.proportions(5)}px;
 	right: -0px;
-	width: 35px;
-	height: 35px;
+	width: ${(p) => p.theme.proportions(35)}px;
+	height: ${(p) => p.theme.proportions(35)}px;
 	background: ${(p) => p.theme.gwen.colors.background.header};
-	font-size: 25px;
-	padding: 4px;
+	font-size: ${(p) => p.theme.proportions(25)}px;
+	padding: ${(p) => p.theme.proportions(4)}px;
 	border-radius: 100%;
 	display: flex;
 	align-items: center;
