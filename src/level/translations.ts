@@ -5,6 +5,9 @@ export interface LevelTranslation {
 	xpUntilNextLevel: string
 	cooldownLogTitle: string
 	rewards: string
+	experience: string
+	coins: string
+	vipCurrency: string
 }
 
 export const LevelTranslations: LevelTranslation = {
@@ -14,4 +17,7 @@ export const LevelTranslations: LevelTranslation = {
 	xpUntilNextLevel: "Xp Until Next Level",
 	cooldownLogTitle: "Cooldowns",
 	rewards: "Rewards",
+	experience: "Experience",
+	coins: "Coins",
+	vipCurrency: "Crystals",
 }
