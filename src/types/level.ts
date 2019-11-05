@@ -1,5 +1,5 @@
 export interface LevelAvatarData {
-	readonly id?: string
+	readonly id: string
 	readonly url: string
 	readonly colors: {
 		readonly background: string

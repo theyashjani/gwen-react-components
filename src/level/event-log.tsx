@@ -7,6 +7,7 @@ import { LevelLog, ModuleType } from "../types/level"
 type Props = {
 	log: LevelLog[]
 	navigate?: (module: string) => void
+	scale: number
 }
 interface State {
 	scrollParams?: ScrollParams
@@ -61,7 +62,7 @@ export class EventLog extends React.Component<Props, State> {
 							height={height}
 							width={width + 20}
 							rowCount={this.props.log.length}
-							rowHeight={(item) => this.getRowHeight(item)}
+							rowHeight={(item) => this.getRowHeight(item) * this.props.scale}
 							onScroll={(scrollParams: ScrollParams) => this.setState({ scrollParams })}
 							rowRenderer={(item) => {
 								const log = this.props.log[item.index]
@@ -109,16 +110,16 @@ const Wrapper = styled.div`
 `
 const EventLogWrapper = styled.div`
 	display: block;
-	font-size: 15px;
-	margin: 10px;
+	font-size: ${(p) => p.theme.proportions(15)}px;
+	margin: ${(p) => p.theme.proportions(10)}px;
 	box-shadow: ${(p) => p.theme.gwen.boxShadow.default};
 `
 const EventLogHeader = styled.div`
 	background: ${(p) => p.theme.gwen.colors.background.header};
-	border-bottom: 1px solid ${(p) => p.theme.gwen.colors.divider};
+	border-bottom: ${(p) => p.theme.proportions(1)}px solid ${(p) => p.theme.gwen.colors.divider};
 	display: flex;
-	padding: 8px 12px;
-	line-height: 16px;
+	padding: ${(p) => p.theme.proportions(8)}px ${(p) => p.theme.proportions(12)}px;
+	line-height: ${(p) => p.theme.proportions(16)}px;
 	span {
 		flex: 1;
 		&:nth-child(1) {
@@ -146,21 +147,21 @@ const EventLogBody = styled.div`
 	transition: 0.2s ease-in-out;
 	height: ${(p: ExpandedType) => {
 		if (p.expanded) {
-			return p.button ? 92 : 32
+			return p.theme.proportions(p.button ? 92 : 32)
 		}
 		return 0
 	}}px;
 	background: ${(p) => p.theme.gwen.colors.background.default};
-	border-bottom: ${(p: ExpandedType) => (p.expanded ? 1 : 0)}px solid ${(p) => p.theme.gwen.colors.divider};
+	border-bottom: ${(p: ExpandedType) => (p.expanded ? p.theme.proportions(1) : 0)}px solid ${(p) => p.theme.gwen.colors.divider};
 `
 const EventLogBodyDate = styled.div`
 	color: ${(p) => p.theme.gwen.colors.text.secondary};
-	font-size: 14px;
-	padding: 8px 12px;
+	font-size: ${(p) => p.theme.proportions(14)}px;
+	padding: ${(p) => p.theme.proportions(8)}px ${(p) => p.theme.proportions(12)}px;
 	text-align: center;
 `
 const EventLogExpand = styled.div`
-	height: ${(p: ExpandedType) => 20}px;
+	height: ${(p: ExpandedType) => p.theme.proportions(20)}px;
 	background: ${(p) => p.theme.gwen.colors.background.header};
 	color: ${(p) => p.theme.gwen.colors.secondary};
 	transform: ${(p: ExpandedType) => (p.expanded ? "rotate(180deg)" : "")};

@@ -65,13 +65,13 @@ const CooldownLogWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	background: ${(p) => p.theme.gwen.colors.background.header};
-	margin: 10px;
-	padding: 8px 12px;
+	margin: ${(p) => p.theme.proportions(10)}px;
+	padding: ${(p) => p.theme.proportions(8)}px ${(p) => p.theme.proportions(12)}px;
 	box-shadow: ${(p) => p.theme.gwen.boxShadow.default};
 `
 
 const CooldownTitle = styled.div`
-	font-size: 15px;
+	font-size: ${(p) => p.theme.proportions(15)}px;
 	font-weight: bold;
 `
 

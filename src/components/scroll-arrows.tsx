@@ -40,11 +40,11 @@ const ArrowBox = styled.div`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	height: 25px;
+	height: ${(p) => p.theme.proportions(25)}px;
 	background: ${(p) => p.theme.gwen.colors.background.header};
 	box-shadow: ${(p) => p.theme.gwen.boxShadow.large};
 	img {
-		height: 10px;
+		height: ${(p) => p.theme.proportions(10)}px;
 	}
 `
 interface ArrowStyleType {
@@ -60,7 +60,7 @@ const ArrowStyle = styled.div`
 	display: block;
 	transition: 0.5s ease-in-out;
 	opacity: ${(p: ArrowStyleType) => (p.show ? 1 : 0)};
-	height: 35px;
+	height: ${(p) => p.theme.proportions(35)}px;
 	user-select: none;
 	overflow: hidden;
 `

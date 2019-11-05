@@ -22,7 +22,7 @@ export function LevelModuleComponent(props: Props) {
 	const { translations, scale, ...restprops } = props
 	return (
 		<WrapperComponent scale={scale}>
-			<LevelModule {...restprops} translations={{ ...LevelTranslations, ...translations } as LevelTranslation} />
+			<LevelModule {...restprops} scale={scale || 1} translations={{ ...LevelTranslations, ...translations } as LevelTranslation} />
 		</WrapperComponent>
 	)
 }
@@ -40,7 +40,7 @@ export function LevelStatusComponent(props: Omit<Props, "data" | "selectAvatar">
 	const { translations, scale, ...restprops } = props
 	return (
 		<WrapperComponent scale={scale}>
-			<Status {...restprops} translations={{ ...LevelTranslations, ...translations } as LevelTranslation} />
+			<Status {...restprops} scale={scale || 1} translations={{ ...LevelTranslations, ...translations } as LevelTranslation} />
 		</WrapperComponent>
 	)
 }

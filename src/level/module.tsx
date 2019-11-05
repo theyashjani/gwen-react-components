@@ -12,16 +12,17 @@ export interface LevelModuleProps {
 	avatar?: LevelAvatarData
 	cooldowns?: ModuleLevelUserBehaviorCooldownData[]
 	selectAvatar?: () => void
+	scale: number
 }
 
 export function LevelModule(props: LevelModuleProps) {
 	return (
 		<ModuleWrapper>
 			<ModuleWrapperLeft>
-				{<Profile data={props.data} translations={props.translations} avatar={props.avatar} selectAvatar={props.selectAvatar} />}
+				<Profile data={props.data} translations={props.translations} avatar={props.avatar} selectAvatar={props.selectAvatar} scale={props.scale} />
 			</ModuleWrapperLeft>
 			<ModuleWrapperRight>
-				<Status log={props.log} translations={props.translations} cooldowns={props.cooldowns} />
+				<Status log={props.log} translations={props.translations} cooldowns={props.cooldowns} scale={props.scale} />
 			</ModuleWrapperRight>
 		</ModuleWrapper>
 	)

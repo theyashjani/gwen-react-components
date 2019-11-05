@@ -110,8 +110,8 @@ const ModuleWrapperRightDiv = styled.div`
 
 const WrapperTitle = styled.div`
 	background: ${(p) => p.theme.gwen.colors.background.header};
-	line-height: 55px;
-	font-size: 20px;
+	line-height: ${(p) => p.theme.proportions(55)}px;
+	font-size: ${(p) => p.theme.proportions(20)}px;
 	text-align: center;
 	font-weight: bold;
 	border-bottom: ${(p) => p.theme.gwen.border.default};
@@ -120,7 +120,7 @@ const WrapperTitle = styled.div`
 `
 const TabsWrapperHeaderDiv = styled(WrapperTitle)`
 	display: flex;
-	font-size: 18px;
+	font-size: ${(p) => p.theme.proportions(18)}px;
 	border-bottom: none;
 	overflow: hidden;
 `
@@ -130,7 +130,7 @@ const TabsWrapperDiv = styled.div`
 `
 const TabsWrapperElements = styled.div`
 	width: 100%;
-	height: calc(100% - 55px);
+	height: ${(p) => `calc(100% - ${p.theme.proportions(55)}px)`};
 `
 
 interface TabProps {
@@ -139,9 +139,14 @@ interface TabProps {
 }
 
 const Tab = styled.div`
-	line-height: 55px;
+	line-height: ${(p) => p.theme.proportions(55)}px;
 	position: ${(p: TabProps) => (p.active ? `relative` : ``)};
-	box-shadow: ${(p: TabProps) => (p.active ? `3px 0 6px rgba(50, 50, 50, 0.5), -3px 0 6px rgba(50, 50, 50, 0.5)` : ``)};
+	box-shadow: ${(p: TabProps) =>
+		p.active
+			? `${p.theme.proportions(3)}px 0 ${p.theme.proportions(6)}px rgba(50, 50, 50, 0.5), -${p.theme.proportions(3)}px 0 ${p.theme.proportions(
+					6,
+			  )}px rgba(50, 50, 50, 0.5)`
+			: ``};
 	border: ${(p: TabProps) => (!p.active ? p.theme.gwen.border.default : ``)};
 	cursor: ${(p: TabProps) => (!p.active ? `pointer` : ``)};
 	flex: 1;

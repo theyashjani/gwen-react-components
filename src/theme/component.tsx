@@ -26,8 +26,4 @@ export class WrapperComponent extends React.PureComponent<Props> {
 const GwenWrapper = styled.div`
 	height: 100%;
 	width: 100%;
-	${(p) => {
-		console.log(p.theme.proportions(1))
-		return ""
-	}}
 `

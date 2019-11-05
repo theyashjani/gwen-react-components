@@ -8,7 +8,7 @@ export const GlobalStyle = () => createGlobalStyle`
 		color: ${(p) => p.theme.gwen.colors.text.primary};
 	}
 	hr {
-		height: 1px;
+		height: ${(p) => p.theme.proportions(1)}px;
 		width: 100%;
 		border-color: ${(p) => p.theme.gwen.colors.divider};
 	}
