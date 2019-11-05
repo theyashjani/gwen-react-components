@@ -1,7 +1,7 @@
-import { DefaultTheme } from "./default"
+import { DefaultTheme } from "styled-components"
 import { ThemeOptions } from "./options"
 
-export const darkTheme = (options: ThemeOptions): DefaultTheme => ({
+export const darkTheme = (options: ThemeOptions): DefaultTheme["gwen"] => ({
 	fontFamily: options.fontFamily || "Lato",
 	colors: {
 		primary: options.primaryColor || "#ff5e5e",

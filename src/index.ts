@@ -1,2 +1,2 @@
 export * from "./level"
-export { Theme, ThemeOptions } from "./theme"
+export { GwenTheme, ThemeOptions } from "./theme"

@@ -15,30 +15,31 @@ interface Props {
 	cooldowns?: ModuleLevelUserBehaviorCooldownData[]
 	selectAvatar?: () => void
 	translations?: Partial<LevelTranslation>
+	scale?: number
 }
 
 export function LevelModuleComponent(props: Props) {
-	const { translations, ...restprops } = props
+	const { translations, scale, ...restprops } = props
 	return (
-		<WrapperComponent>
+		<WrapperComponent scale={scale}>
 			<LevelModule {...restprops} translations={{ ...LevelTranslations, ...translations } as LevelTranslation} />
 		</WrapperComponent>
 	)
 }
 
 export function LevelProfileComponent(props: Omit<Props, "cooldowns" | "log"> & { badge?: boolean }) {
-	const { translations, ...restprops } = props
+	const { translations, scale, ...restprops } = props
 	return (
-		<WrapperComponent>
-			<LevelCircle size={160} {...restprops} translations={{ ...LevelTranslations, ...translations } as LevelTranslation} />
+		<WrapperComponent scale={scale}>
+			<LevelCircle size={(scale || 1) * 160} {...restprops} translations={{ ...LevelTranslations, ...translations } as LevelTranslation} />
 		</WrapperComponent>
 	)
 }
 
 export function LevelStatusComponent(props: Omit<Props, "data" | "selectAvatar">) {
-	const { translations, ...restprops } = props
+	const { translations, scale, ...restprops } = props
 	return (
-		<WrapperComponent>
+		<WrapperComponent scale={scale}>
 			<Status {...restprops} translations={{ ...LevelTranslations, ...translations } as LevelTranslation} />
 		</WrapperComponent>
 	)
@@ -49,21 +50,22 @@ export interface LevelSelectAvatarProps {
 	select: (avatar: LevelAvatarData) => void
 	closeModal: () => void
 	avatars: LevelAvatarData[]
+	scale?: number
 }
 
 export function LevelSelectAvatarComponent(props: LevelSelectAvatarProps) {
-	const { ...restprops } = props
+	const { scale, ...restprops } = props
 	return (
-		<WrapperComponent>
+		<WrapperComponent scale={scale}>
 			<SelectAvatar {...restprops} />
 		</WrapperComponent>
 	)
 }
 
-export function LevelBadgeComponent(props: { level: number; text?: string }) {
+export function LevelBadgeComponent(props: { level: number; text?: string; scale?: number }) {
 	return (
-		<WrapperComponent>
-			<LevelBadge level={props.level} size={160} text={props.text || LevelTranslations.level} />
+		<WrapperComponent scale={props.scale}>
+			<LevelBadge level={props.level} size={(props.scale || 1) * 160} text={props.text || LevelTranslations.level} />
 		</WrapperComponent>
 	)
 }

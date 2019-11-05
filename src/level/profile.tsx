@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { Rewards } from "../components/reward"
-import { Theme } from "../theme"
 import { LevelAvatarData, LevelData } from "../types/level"
 import { LevelCircle } from "./level-circle"
 import { LevelTranslation } from "./translations"
@@ -20,7 +19,7 @@ export class Profile extends React.PureComponent<ProfileProps> {
 		return (
 			<Wrapper>
 				<LevelWrapper>
-					<LevelCircle translations={translations} data={data} avatar={this.props.avatar} size={160} />
+					<LevelCircle translations={translations} data={data} avatar={this.props.avatar} selectAvatar={this.props.selectAvatar} size={160} />
 				</LevelWrapper>
 				<hr />
 				<SecondaryText>{translations.xpUntilNextLevel}</SecondaryText>
@@ -42,7 +41,7 @@ const LevelWrapper = styled.div`
 const SecondaryText = styled.div`
 	font-size: 18px;
 	line-height: 24px;
-	color: ${Theme.colors.text.secondary};
+	color: ${(p) => p.theme.gwen.colors.text.secondary};
 	font-weight: bold;
 	padding: 0 20px;
 	margin-top: -4px;

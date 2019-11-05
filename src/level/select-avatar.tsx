@@ -2,7 +2,6 @@ import React from "react"
 import { AutoSizer, List, ScrollParams } from "react-virtualized"
 import styled from "styled-components"
 import { ScrollArrows } from "../components/scroll-arrows"
-import { Theme } from "../theme"
 import { LevelAvatarData } from "../types/level"
 
 export interface SelectAvatarProps {
@@ -77,18 +76,18 @@ const Avatar = styled.div`
 	max-width: 156px;
 	height: 156px;
 
-	border: 10px solid ${Theme.colors.background.backdrop};
+	border: 10px solid ${(p) => p.theme.gwen.colors.background.backdrop};
 	border-radius: 100%;
 	transition: 0.2s ease-in-out;
 	cursor: pointer;
-	box-shadow: ${Theme.boxShadow.default};
+	box-shadow: ${(p) => p.theme.gwen.boxShadow.default};
 	margin: 0 15px;
 	img {
 		display: block;
 		border-radius: 100%;
 	}
 	&:hover {
-		border-color: ${Theme.colors.background.header};
+		border-color: ${(p) => p.theme.gwen.colors.background.header};
 	}
 `
 const EmptyAvatar = styled.div`
@@ -102,7 +101,7 @@ const AvatarCheck = styled.div`
 	right: -0px;
 	width: 35px;
 	height: 35px;
-	background: ${Theme.colors.background.header};
+	background: ${(p) => p.theme.gwen.colors.background.header};
 	font-size: 25px;
 	padding: 4px;
 	border-radius: 100%;
