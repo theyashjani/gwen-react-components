@@ -32,8 +32,10 @@
 	},
 	"peerDependencies": {},
 	"devDependencies": {
-		"@babel/core": "^7.6.4",
+		"@babel/core": "^7.7.0",
+		"@babel/plugin-proposal-class-properties": "^7.7.0",
 		"@babel/plugin-proposal-decorators": "^7.6.0",
+		"@babel/preset-env": "^7.7.0",
 		"@types/jest": "24.0.21",
 		"@types/node": "12.12.5",
 		"@types/react": "16.9.11",
