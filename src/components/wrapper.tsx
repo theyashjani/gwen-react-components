@@ -79,13 +79,13 @@ export class TabsWrapper extends React.PureComponent<TabsWrapperProps> {
 const ModuleWrapperOuter = styled.div`
 	display: flex;
 	height: 100%;
-	padding: 1%;
+	padding: ${(p) => p.theme.proportions(8)};
 	background: ${(p) => p.theme.gwen.colors.background.backdrop};
 `
 
 const ModuleWrapperFullDiv = styled.div`
 	position: relative;
-	margin-right: 0.5%;
+	margin-right: ${(p) => p.theme.proportions(4)};
 	height: 100%;
 	width: 100%;
 	background: ${(p) => p.theme.gwen.colors.background.default};
@@ -95,7 +95,7 @@ const ModuleWrapperLeftDiv = styled.div`
 	position: relative;
 	height: 100%;
 	flex: 1;
-	margin-right: 0.5%;
+	margin-right: ${(p) => p.theme.proportions(4)};
 	background: ${(p) => p.theme.gwen.colors.background.default};
 	overflow: hidden;
 `
@@ -103,7 +103,7 @@ const ModuleWrapperRightDiv = styled.div`
 	position: relative;
 	height: 100%;
 	flex: 1;
-	margin-left: 0.5%;
+	margin-left: ${(p) => p.theme.proportions(4)};
 	background: ${(p) => p.theme.gwen.colors.background.default};
 	overflow: hidden;
 `
