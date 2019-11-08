@@ -4,7 +4,7 @@ import { GlobalStyle } from "./global"
 import { GwenTheme } from "./theme"
 
 interface Props {
-	children: JSX.Element | JSX.Element[]
+	children?: JSX.Element | JSX.Element[]
 	scale?: number
 }
 

@@ -1,3 +1,5 @@
+import { RewardData } from "./reward"
+
 export interface LevelAvatarData {
 	readonly id: string
 	readonly url: string
@@ -35,19 +37,6 @@ export interface ModuleLevelUserBehaviorCooldownData {
 	readonly cooldownInMS: number
 	readonly lastReportedAt: Date
 }
-
-export interface RewardData {
-	readonly currency: Currency
-	readonly amount: number
-}
-
-export enum CurrencyEnum {
-	"xp",
-	"coin",
-	"vipcurrency",
-}
-
-export type Currency = keyof typeof CurrencyEnum
 
 export type LevelData = {
 	level: number

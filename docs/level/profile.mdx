@@ -2,6 +2,7 @@
 name: Profile
 route: /level/profile
 menu: Level
+edit: false
 ---
 
 import { Playground, Props } from "docz"
@@ -13,17 +14,13 @@ import { AvatarData } from "./data"
 Use this component to integrate a Level & Reward into your page
 
 <Playground>
-	<div style={{ width: "100%", height: "240px" }}>
-		<LevelProfileComponent data={{ level: 5, currentXp: 512, totalXp: 10231, levelXp: 1100 }} avatar={AvatarData} />
-	</div>
+	<LevelProfileComponent data={{ level: 5, currentXp: 512, totalXp: 10231, levelXp: 1100 }} avatar={AvatarData} />
 </Playground>
 
 <br />
 
 <Playground>
-	<div style={{ width: "100%", height: "160px" }}>
-		<LevelProfileComponent badge={false} data={{ level: 5, currentXp: 770, totalXp: 10231, levelXp: 1100 }} avatar={AvatarData} />
-	</div>
+	<LevelProfileComponent badge={false} data={{ level: 5, currentXp: 770, totalXp: 10231, levelXp: 1100 }} avatar={AvatarData} />
 </Playground>
 
 <Props of={LevelProfileComponent} />

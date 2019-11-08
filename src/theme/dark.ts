@@ -16,6 +16,10 @@ export const darkTheme = (options: ThemeOptions): DefaultTheme["gwen"] => ({
 			success: "#2a2a2a",
 			danger: "#ff5e5e",
 		},
+		button: {
+			default: "linear-gradient(0deg, rgba(56,56,56,1) 0%, rgba(97,97,97,1) 100%)",
+			next: "linear-gradient(0deg, rgba(235,235,235,1) 0%, rgba(255,255,255,1) 100%)",
+		},
 		background: {
 			default: "#434343",
 			backdrop: "#313131",

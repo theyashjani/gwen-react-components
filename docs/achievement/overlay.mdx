@@ -1,0 +1,52 @@
+---
+name: Overlay
+route: /achievement/overlay
+menu: Achievement
+edit: false
+---
+
+import { Playground, Props } from "docz"
+import { AchievementOverlayComponent } from "../../src"
+
+# Overlay Component
+
+Use this component in Embedded views
+
+<Playground>
+	<div style={{ width: "100%", height: "500px", overflow: "hidden" }}>
+		<AchievementOverlayComponent
+			achievement={{
+				title: "Sharing is Caring <3",
+				tiers: [
+					{
+						title: "First Time Sharer",
+						description: "Share some love with your sifnificant other! Five time's is the charm!",
+						amount: 5,
+						progress: 3,
+						icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+						rewards: [{ currency: "xp", amount: 100 }],
+					},
+					{
+						title: "Mega Sharer",
+						description: "Everyone loves when you're a giver, share some love with everyone around you to gain some karma back! Ten time's the charm!",
+						amount: 10,
+						progress: 3,
+						icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+						rewards: [{ currency: "coin", amount: 20 }],
+					},
+					{
+						title: "Master of Sharing",
+						description:
+							"We all love sharing, and when you share it means that you care! And to become a master of sharing you need to keep it up in your everyday life. Spread som love and become a master of sharing!",
+						amount: 25,
+						progress: 3,
+						icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+						rewards: [{ currency: "xp", amount: 500 }, { currency: "coin", amount: 50 }],
+					},
+				],
+			}}
+		/>
+	</div>
+</Playground>
+
+<Props of={AchievementOverlayComponent} />

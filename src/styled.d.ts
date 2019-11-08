@@ -15,6 +15,7 @@ declare module "styled-components" {
 				danger: string
 				info: string
 				text: { primary: string; secondary: string; success: string; danger: string }
+				button: { default: string; next: string }
 				background: { default: string; backdrop: string; header: string; list: string; badge: string; podium: string }
 				divider: string
 				overlay: string

@@ -1,0 +1,51 @@
+---
+name: Box
+route: /achievement/box
+menu: Achievement
+edit: false
+---
+
+import { Playground, Props } from "docz"
+import { AchievementBoxComponent } from "../../src"
+
+# Achievement Box Component
+
+Use this component in Embedded views
+
+<Playground>
+	<div style={{ display: "flex", justifyContent: "space-evenly" }}>
+		<div style={{ width: "30%" }}>
+			<AchievementBoxComponent
+				achievement={{
+					title: "Super Giver",
+					tiers: [
+						{
+							amount: 10,
+							progress: 6,
+							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+						},
+					],
+				}}
+				open={(achievement) => console.log(achievement)}
+			/>
+		</div>
+		<div style={{ width: "30%" }}>
+			<AchievementBoxComponent
+				achievement={{
+					title: "Sharing is Caring <3",
+					tiers: [
+						{
+							amount: 1,
+							progress: 1,
+							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+							completed: new Date(),
+						},
+					],
+				}}
+				open={(achievement) => console.log(achievement)}
+			/>
+		</div>
+	</div>
+</Playground>
+
+<Props of={AchievementBoxComponent} />

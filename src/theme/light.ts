@@ -16,6 +16,10 @@ export const lightTheme = (options: ThemeOptions): DefaultTheme["gwen"] => ({
 			success: "#fff",
 			danger: "#ff5e5e",
 		},
+		button: {
+			default: "linear-gradient(0deg, rgba(235,235,235,1) 0%, rgba(255,255,255,1) 100%)",
+			next: "linear-gradient(0deg, rgba(56,56,56,1) 0%, rgba(97,97,97,1) 100%)",
+		},
 		background: {
 			default: "#f3f3f3",
 			backdrop: "#d7d7d7",

@@ -1,0 +1,97 @@
+---
+name: Module
+route: /achievement
+menu: Achievement
+edit: false
+---
+
+import { Playground, Props } from "docz"
+import { AchievementModuleComponent } from "../../src"
+
+# Module Component
+
+Use this component in Embedded views
+
+<Playground>
+	<div style={{ width: "100%", height: "650px", overflow: "hidden" }}>
+		<AchievementModuleComponent
+			achievements={[
+				{
+					title: "Super Giver",
+					tiers: [
+						{
+							amount: 10,
+							progress: 6,
+							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+						},
+					],
+				},
+				{
+					title: "Sharing is Caring <3",
+					tiers: [
+						{
+							amount: 1,
+							progress: 1,
+							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+							completed: new Date(),
+						},
+					],
+				},
+				{
+					title: "Sweet Symphony",
+					tiers: [
+						{
+							amount: 15,
+							progress: 3,
+							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+						},
+					],
+				},
+				{
+					title: "Coding",
+					tiers: [
+						{
+							amount: 5,
+							progress: 3,
+							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+						},
+					],
+				},
+				{
+					title: "Spint the Bottle",
+					tiers: [
+						{
+							amount: 5,
+							progress: 4,
+							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+						},
+					],
+				},
+				{
+					title: "Food Run",
+					tiers: [
+						{
+							amount: 3,
+							progress: 3,
+							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+							completed: new Date(),
+						},
+					],
+				},
+				{
+					title: "Poke a Bear",
+					tiers: [
+						{
+							amount: 1,
+							progress: 0,
+							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
+						},
+					],
+				},
+			]}
+			open={(achievement) => console.log(achievement)}
+		/>
+	</div>
+</Playground>
+
+<Props of={AchievementModuleComponent} />

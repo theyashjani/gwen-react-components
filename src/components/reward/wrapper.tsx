@@ -1,34 +1,39 @@
 import React from "react"
 import styled, { DefaultTheme } from "styled-components"
+import { Currency } from "../../types/reward"
 
 interface Props {
+	type: Currency
 	amount?: number
 	size?: number
+	icon?: string
 	description?: string
-	icon: JSX.Element
-	background: string
 }
 interface State {
 	clicks: number
 }
 
-export class RewardWrapper extends React.PureComponent<Props, State> {
+export class Reward extends React.PureComponent<Props, State> {
 	state: State = { clicks: 0 }
 
 	easterEgg() {
 		this.setState((prevState: Readonly<State>) => ({ ...prevState, clicks: prevState.clicks + 1 }))
 	}
 
+	icon() {
+		return this.props.icon || `https://gwen.insertcoin.se/widget/images/currency/${this.props.type}.svg`
+	}
+
 	render() {
 		const size = this.props.size || 80
 		return (
-			<Wrapper onClick={() => this.easterEgg()} size={size} amount={typeof this.props.amount === "number"} background={this.props.background}>
+			<Wrapper onClick={() => this.easterEgg()} size={size} amount={typeof this.props.amount === "number"}>
 				{typeof this.props.amount === "number" && (
 					<Amount size={size}>
 						<span>{this.props.amount}</span>
 					</Amount>
 				)}
-				<Icon size={size}>{this.props.icon}</Icon>
+				<Icon size={size} src={this.icon()} alt="icon" />
 				<Description size={size}>{this.props.description}</Description>
 				{this.state.clicks >= 10 && <EasterEgg size={size} />}
 			</Wrapper>
@@ -40,14 +45,12 @@ interface WrapperProps {
 	theme: DefaultTheme
 	size: number
 	amount: boolean
-	background: string
 }
 const Wrapper = styled.div`
 	position: relative;
 	margin: auto;
 	margin-top: ${(p: WrapperProps) => (p.amount ? `${p.size * 0.2}px` : "0")};
 	margin-bottom: ${(p: WrapperProps) => p.size * 0.3}px;
-	background: ${(p) => p.background};
 	border-radius: 100%;
 	width: ${(p: WrapperProps) => p.size}px;
 	height: ${(p: WrapperProps) => p.size}px;
@@ -57,14 +60,11 @@ interface SizeProps {
 	theme: DefaultTheme
 	size: number
 }
-const Icon = styled.div`
-	padding: 17%;
-	height: ${(p: SizeProps) => p.size}px;
-	svg {
-		display: block;
-		width: ${(p: SizeProps) => p.size / 1.5}px;
-		height: ${(p: SizeProps) => p.size / 1.5}px;
-	}
+const Icon = styled.img`
+	display: block;
+	width: ${(props: SizeProps) => props.theme.proportions(props.size)}px;
+	height: ${(props: SizeProps) => props.theme.proportions(props.size)}px;
+	object-fit: contain;
 `
 const Amount = styled.div`
 	display: flex;

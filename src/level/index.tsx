@@ -1,6 +1,7 @@
 import React from "react"
 import { WrapperComponent } from "../theme"
 import { LevelAvatarData, LevelData, LevelLog, ModuleLevelUserBehaviorCooldownData } from "../types/level"
+import { RewardIcons } from "../types/reward"
 import { LevelBadge } from "./level-badge"
 import { LevelCircle } from "./level-circle"
 import { LevelModule } from "./module"
@@ -18,7 +19,7 @@ interface Props {
 	scale?: number
 }
 
-export function LevelModuleComponent(props: Props) {
+export function LevelModuleComponent(props: Props & { rewardIcons: RewardIcons }) {
 	const { translations, scale, ...restprops } = props
 	return (
 		<WrapperComponent scale={scale}>

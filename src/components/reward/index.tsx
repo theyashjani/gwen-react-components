@@ -1,28 +1,28 @@
 import React from "react"
 import styled from "styled-components"
-import { RewardData } from "../../types/level"
-import { RewardIcons } from "./icons"
+import { Currency, RewardData } from "../../types/reward"
+import { Reward } from "./wrapper"
 
 interface Props {
 	rewards: RewardData[]
 	rewardsTranslation: string
 	size?: number
+	icons?: Partial<Record<Currency, string>>
 }
 
-export class Rewards extends React.PureComponent<Props> {
-	render() {
-		return (
-			<Wrapper>
-				<RewardText>{this.props.rewardsTranslation}:</RewardText>
-				<Upgrade>
-					{/* eslint-disable react/no-array-index-key */}
-					{this.props.rewards.map((reward, key) =>
-						React.createElement(RewardIcons[reward.currency], { key, size: this.props.size, amount: reward.amount, text: "" }),
-					)}
-				</Upgrade>
-			</Wrapper>
-		)
-	}
+export function Rewards(props: Props) {
+	console.log(props)
+	return (
+		<Wrapper>
+			<RewardText>{props.rewardsTranslation}:</RewardText>
+			<Upgrade>
+				{/* eslint-disable react/no-array-index-key */}
+				{props.rewards.map((reward, key) => (
+					<Reward key={key} size={props.size} amount={reward.amount} type={reward.currency} icon={props.icons && props.icons[reward.currency]} />
+				))}
+			</Upgrade>
+		</Wrapper>
+	)
 }
 
 const Wrapper = styled.div`

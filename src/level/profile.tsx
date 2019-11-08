@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Rewards } from "../components/reward"
 import { LevelAvatarData, LevelData } from "../types/level"
+import { RewardIcons } from "../types/reward"
 import { LevelCircle } from "./level-circle"
 import { LevelTranslation } from "./translations"
 
@@ -10,6 +11,7 @@ export interface ProfileProps {
 	data?: LevelData
 	avatar?: LevelAvatarData
 	selectAvatar?: () => void
+	rewardIcons?: RewardIcons
 	scale: number
 }
 
@@ -31,7 +33,9 @@ export class Profile extends React.PureComponent<ProfileProps> {
 				<hr />
 				<SecondaryText>{translations.xpUntilNextLevel}</SecondaryText>
 				<ExperienceLeft>{data ? data.levelXp - data.currentXp : ""}</ExperienceLeft>
-				{data && data.rewards.length > 0 && <Rewards rewards={data.rewards} rewardsTranslation={translations.rewards} size={this.props.scale * 80} />}
+				{data && data.rewards.length > 0 && (
+					<Rewards rewards={data.rewards} rewardsTranslation={translations.rewards} icons={this.props.rewardIcons} size={this.props.scale * 80} />
+				)}
 			</Wrapper>
 		)
 	}
