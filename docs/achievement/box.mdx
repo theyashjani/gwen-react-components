@@ -7,6 +7,7 @@ edit: false
 
 import { Playground, Props } from "docz"
 import { AchievementBoxComponent } from "../../src"
+import { AchievementSuperGiver, AchievementSharingIsCaring } from "./data"
 
 # Achievement Box Component
 
@@ -16,32 +17,13 @@ Use this component in Embedded views
 	<div style={{ display: "flex", justifyContent: "space-evenly" }}>
 		<div style={{ width: "30%" }}>
 			<AchievementBoxComponent
-				achievement={{
-					title: "Super Giver",
-					tiers: [
-						{
-							amount: 10,
-							progress: 6,
-							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
-						},
-					],
-				}}
+				achievement={AchievementSuperGiver}
 				open={(achievement) => console.log(achievement)}
 			/>
 		</div>
 		<div style={{ width: "30%" }}>
 			<AchievementBoxComponent
-				achievement={{
-					title: "Sharing is Caring <3",
-					tiers: [
-						{
-							amount: 1,
-							progress: 1,
-							icon: "https://gwen.insertcoin.se/widget/images/action-icons/FallbackPlaceholder.svg",
-							completed: new Date(),
-						},
-					],
-				}}
+				achievement={AchievementSharingIsCaring}
 				open={(achievement) => console.log(achievement)}
 			/>
 		</div>
