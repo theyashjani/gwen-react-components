@@ -11,7 +11,6 @@ interface Props {
 }
 
 export function Rewards(props: Props) {
-	console.log(props)
 	return (
 		<Wrapper>
 			<RewardText>{props.rewardsTranslation}:</RewardText>

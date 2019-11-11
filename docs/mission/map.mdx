@@ -1,0 +1,32 @@
+---
+name: Map
+route: /mission/map
+menu: Mission
+edit: false
+---
+
+import { Playground, Props } from "docz"
+import { MissionMapComponent } from "../../src"
+import { SkyTheme, OuterSpaceTheme, UnderwaterTheme } from "./data"
+
+# Map Component
+
+Use this component to integrate a Mission Map
+
+<Playground>
+	<div style={{ display: "flex", width: "100%", height: "650px" }}>
+		<div style={{ marginRight: "10px", width: "100%", height: "650px" }}>
+			<MissionMapComponent themes={[SkyTheme]} current={1024} />
+		</div>
+		<div style={{ margin: "0 10px", width: "100%", height: "650px" }}>
+			<MissionMapComponent themes={[OuterSpaceTheme]} current={42} />
+		</div>
+		<div style={{ marginLeft: "10px", width: "100%", height: "650px" }}>
+			<MissionMapComponent themes={[UnderwaterTheme]} current={7} />
+		</div>
+	</div>
+</Playground>
+
+<br></br>
+
+<Props of={MissionMapComponent} />

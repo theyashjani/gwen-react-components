@@ -28,6 +28,7 @@ const ProgressWrapper = styled.div`
 	display: flex;
 	border: ${(p) => p.theme.gwen.border.default};
 	overflow: hidden;
+	background: ${(p) => p.theme.gwen.colors.background.default};
 `
 const ProgressBarWrapper = styled.div`
 	height: ${(p) => p.theme.proportions(25)}px;

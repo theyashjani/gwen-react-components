@@ -5,7 +5,7 @@ export const GlobalStyle = () => createGlobalStyle`
 		box-sizing: border-box;
 	}
 	.gwen {
-		color: ${(p) => p.theme.gwen.colors.text.primary};
+		/*color: ${(p) => p.theme.gwen.colors.text.primary};*/
 	}
 	hr {
 		height: ${(p) => p.theme.proportions(1)}px;

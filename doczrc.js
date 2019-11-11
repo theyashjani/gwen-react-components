@@ -9,8 +9,7 @@ export default {
 	},
 	editBranch: "dev",
 	codeSandbox: false,
-	separator: "asdasd",
 	base: "/gwen-react-components/",
-	menu: ["Getting Started", "Level", "Mission", "Achievement", "Shop", "Leaderboard", "Self Reporting", "Other"],
+	menu: ["Getting Started", "Level", "Mission", "Achievement", "Components"],
 	ignore: ["README.md"],
 }

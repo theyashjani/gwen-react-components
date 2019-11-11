@@ -1,0 +1,31 @@
+---
+name: Objective
+route: /components/objective
+menu: Components
+edit: false
+---
+
+import { Playground, Props } from "docz"
+import { ObjectiveComponent } from "../../src"
+
+# Objective Component
+
+Use this component to integrate a Objective Component
+
+<Playground>
+	<div style={{ display: "flex" }}>
+		<div style={{ marginRight: "10px", width: "100%" }}>
+			<ObjectiveComponent title="Share our library" amount={1} completed={0} cta="https://github.com/InsertCoinAB/gwen-react-components" />
+		</div>
+		<div style={{ margin: "0 10px", width: "100%" }}>
+			<ObjectiveComponent title="Read about Gamification" amount={5} completed={5} cta="https://insertcoin.se/what-is-gamification/" />
+		</div>
+		<div style={{ marginLeft: "10px", width: "100%" }}>
+			<ObjectiveComponent title="Star our library" amount={10} completed={6} cta="https://github.com/InsertCoinAB/gwen-react-components" />
+		</div>
+	</div>
+</Playground>
+
+<br></br>
+
+<Props of={ObjectiveComponent} />
