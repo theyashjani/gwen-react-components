@@ -16,7 +16,6 @@ interface State {
 	scrollParams?: ScrollParams
 }
 
-const proportion = (n: number) => n
 export class MissionMap extends React.PureComponent<Props, State> {
 	state: State = {}
 	list: React.RefObject<List> = React.createRef()

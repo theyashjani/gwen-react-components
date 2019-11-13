@@ -16,13 +16,13 @@ Use this component to integrate a Mission Map
 <Playground>
 	<div style={{ display: "flex", width: "100%", height: "650px" }}>
 		<div style={{ marginRight: "10px", width: "100%", height: "650px" }}>
-			<MissionMapComponent themes={[SkyTheme]} current={1024} />
+			<MissionMapComponent themes={[SkyTheme]} current={1024} select={(mission) => console.log(mission)} />
 		</div>
 		<div style={{ margin: "0 10px", width: "100%", height: "650px" }}>
-			<MissionMapComponent themes={[OuterSpaceTheme]} current={42} />
+			<MissionMapComponent themes={[OuterSpaceTheme]} current={42} select={(mission) => console.log(mission)} />
 		</div>
 		<div style={{ marginLeft: "10px", width: "100%", height: "650px" }}>
-			<MissionMapComponent themes={[UnderwaterTheme]} current={7} />
+			<MissionMapComponent themes={[UnderwaterTheme]} current={7} select={(mission) => console.log(mission)} />
 		</div>
 	</div>
 </Playground>
