@@ -8,7 +8,11 @@ export function dateDHM(milliseconds: number) {
 	ms -= h * HOUR_MS
 	const m = Math.ceil(ms / MINUTE_MS)
 
-	return [{ key: "d", amount: d }, { key: "h", amount: h }, { key: "m", amount: m }]
+	return [
+		{ key: "d", amount: d },
+		{ key: "h", amount: h },
+		{ key: "m", amount: m },
+	]
 		.filter((x) => x.amount)
 		.map((x) => `${x.amount}${x.key}`)
 		.join(" ")
@@ -24,7 +28,12 @@ export function dateDHMS(milliseconds: number) {
 	ms -= m * MINUTE_MS
 	const s = Math.ceil(ms / SECOND_MS)
 
-	return [{ key: "d", amount: d }, { key: "h", amount: h }, { key: "m", amount: m }, { key: "s", amount: s }]
+	return [
+		{ key: "d", amount: d },
+		{ key: "h", amount: h },
+		{ key: "m", amount: m },
+		{ key: "s", amount: s },
+	]
 		.filter((x) => x.amount)
 		.map((x) => `${x.amount}${x.key}`)
 		.join(" ")

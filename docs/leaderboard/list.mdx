@@ -1,0 +1,22 @@
+---
+name: List
+route: /leaderboard/list
+menu: Leaderboard
+edit: false
+---
+
+import { Playground, Props } from "docz"
+import { LeaderboardListComponent } from "../../src"
+import { Leaderboard } from "./data"
+
+# List Component
+
+Use this component to integrate a Leaderboard List
+
+<Playground>
+	<LeaderboardListComponent leaderboard={Leaderboard} />
+</Playground>
+
+<br></br >
+
+<Props of={LeaderboardListComponent} />

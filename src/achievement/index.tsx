@@ -4,7 +4,7 @@ import { AchievementData } from "../types/achievement"
 import { RewardIcons } from "../types/reward"
 import { AchievementBox } from "./box"
 import { AchievementModule } from "./module"
-import { AchievementOverlay } from "./overlay"
+import { AchievementTiers } from "./tiers"
 import { AchievementTranslation, AchievementTranslations } from "./translations"
 
 interface ModuleProps {
@@ -46,18 +46,18 @@ export function AchievementBoxComponent(props: BoxProps) {
 	)
 }
 
-interface OverlayProps {
+interface TiersProps {
 	achievement: AchievementData
 	translations?: Partial<AchievementTranslation>
 	rewardIcons?: RewardIcons
 	scale?: number
 }
 
-export function AchievementOverlayComponent(props: OverlayProps) {
+export function AchievementTiersComponent(props: TiersProps) {
 	const { translations, scale, ...restprops } = props
 	return (
 		<WrapperComponent scale={scale}>
-			<AchievementOverlay {...restprops} translations={{ ...AchievementTranslations, ...translations } as AchievementTranslation} />
+			<AchievementTiers {...restprops} />
 		</WrapperComponent>
 	)
 }

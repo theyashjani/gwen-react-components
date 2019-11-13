@@ -1,0 +1,23 @@
+---
+name: Tiers
+route: /achievement/tiers
+menu: Achievement
+edit: false
+---
+
+import { Playground, Props } from "docz"
+import { AchievementTiersComponent } from "../../src"
+import { AchievementSharer } from "./data"
+
+# Tiers Component
+
+Use this component in Embedded views
+
+
+<Playground>
+	<div style={{ width: "calc(100% - 40px)", background: "#434343", padding: "20px" }}>
+		<AchievementTiersComponent achievement={AchievementSharer} />
+	</div>
+</Playground>
+
+<Props of={AchievementTiersComponent} />
