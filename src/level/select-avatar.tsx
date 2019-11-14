@@ -2,6 +2,7 @@ import React from "react"
 import { AutoSizer, List, ScrollParams } from "react-virtualized"
 import styled from "styled-components"
 import { ScrollArrows } from "../components/scroll-arrows"
+import { Check } from "../icons/check"
 import { LevelAvatarData } from "../types/level"
 
 export interface SelectAvatarProps {
@@ -44,7 +45,7 @@ export class SelectAvatar extends React.PureComponent<SelectAvatarProps, State> 
 											<img src={avatar.url} alt="avatar" />
 											{avatar.id === this.props.current && (
 												<AvatarCheck>
-													<img src="https://gwen.insertcoin.se/widget/images/icons/checkmark-green.svg" alt="checkmark" />
+													<Checkmark />
 												</AvatarCheck>
 											)}
 										</Avatar>
@@ -53,7 +54,7 @@ export class SelectAvatar extends React.PureComponent<SelectAvatarProps, State> 
 												<img src={avatar2.url} alt="avatar" />
 												{avatar2.id === this.props.current && (
 													<AvatarCheck>
-														<img src="https://gwen.insertcoin.se/widget/images/icons/checkmark-green.svg" alt="checkmark" />
+														<Checkmark />
 													</AvatarCheck>
 												)}
 											</Avatar>
@@ -86,6 +87,7 @@ const Avatar = styled.div`
 	img {
 		display: block;
 		border-radius: 100%;
+		width: 100%;
 	}
 	&:hover {
 		border-color: ${(p) => p.theme.gwen.colors.background.header};
@@ -112,5 +114,11 @@ const AvatarCheck = styled.div`
 	img {
 		width: 100%;
 		height: auto;
+	}
+`
+
+const Checkmark = styled(Check)`
+	path {
+		fill: ${(p) => p.theme.gwen.colors.success};
 	}
 `
