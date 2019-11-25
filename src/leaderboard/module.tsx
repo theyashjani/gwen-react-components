@@ -34,7 +34,7 @@ export class LeaderboardModule extends React.PureComponent<LeaderboardModuleProp
 				<Wrapper>
 					<TopWrapper>
 						<Tabs
-							items={this.props.columns.map((column) => column)}
+							items={this.props.columns.map((column) => ({ text: this.props.translations[column], value: column }))}
 							value={this.props.active}
 							onChange={(column) => this.props.select(column, this.props.timespan)}
 						/>
@@ -65,7 +65,7 @@ export class LeaderboardModule extends React.PureComponent<LeaderboardModuleProp
 						<TimeToggle>
 							<TimeToggleTitleLeft active={this.props.timespan === "alltime"}>{this.props.translations.alltime}</TimeToggleTitleLeft>
 							<Switch
-								onChange={() => this.props.select(this.props.active, this.props.timespan === "alltime" ? "alltime" : "weekly")}
+								onChange={() => this.props.select(this.props.active, this.props.timespan === "alltime" ? "weekly" : "alltime")}
 								value={this.props.timespan !== "alltime"}
 							/>
 							<TimeToggleTitleRight active={this.props.timespan === "weekly"}>{this.props.translations.weekly}</TimeToggleTitleRight>
@@ -100,7 +100,7 @@ const PlayerScoreWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	width: 100%;
-	height: ${(p) => p.theme.proportions(75)}px;
+	height: ${(p) => p.theme.proportions(73)}px;
 	padding: ${(p) => p.theme.proportions(8)}px;
 	background: ${(p) => p.theme.gwen.colors.background.header};
 	border-bottom: ${(p) => p.theme.gwen.border.default};

@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 type Props = {
 	value?: string
-	items?: string[]
+	items?: Array<{ text: string; value: string }>
 	onChange: (value: string) => void
 }
 
@@ -12,20 +12,13 @@ export function Tabs(props: Props) {
 		<TabsWrapper>
 			<TabsHeader>
 				{props.items &&
-					props.items.map((item, index) => {
-						return (
-							<div
-								/* eslint-disable react/no-array-index-key */
-								key={index}
-								className={item === props.value ? "active" : ""}
-								onClick={() => props.onChange(item)}
-							>
-								<div>
-									<span>{item}</span>
-								</div>
+					props.items.map((item) => (
+						<div key={item.value} className={item.value === props.value ? "active" : ""} onClick={() => props.onChange(item.value)}>
+							<div>
+								<span>{item.text}</span>
 							</div>
-						)
-					})}
+						</div>
+					))}
 			</TabsHeader>
 		</TabsWrapper>
 	)

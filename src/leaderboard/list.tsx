@@ -19,64 +19,66 @@ export class LeaderboardList extends React.PureComponent<Props> {
 
 	render() {
 		return (
-			this.props.leaderboard && (
-				<Wrapper>
-					<Podium>
-						<SpotWrapper data-cy="leaderboard-podium-spot">
-							{this.props.leaderboard[1] && (
-								<>
-									<PodiumName height={1.5}>{this.props.leaderboard[1].nickname}</PodiumName>
-									<PodiumScore height={1.5}>{this.parseScore(this.props.leaderboard[1].score)}</PodiumScore>
-								</>
-							)}
-							<PodiumBar height={1.5}>
-								<Placement placement={2} />
-							</PodiumBar>
-						</SpotWrapper>
-						<SpotWrapper data-cy="leaderboard-podium-spot">
-							{this.props.leaderboard[0].score ? (
-								<>
-									<PodiumName height={2}>{this.props.leaderboard[0].nickname}</PodiumName>
-									<PodiumScore height={2}>{this.parseScore(this.props.leaderboard[0].score)}</PodiumScore>
-								</>
-							) : (
-								<PodiumWarning height={2}>{this.props.translations.noHighscore}</PodiumWarning>
-							)}
-							<PodiumBar height={2}>
-								<Placement placement={1} />
-							</PodiumBar>
-						</SpotWrapper>
-						<SpotWrapper data-cy="leaderboard-podium-spot">
-							{this.props.leaderboard[2] && (
-								<>
-									<PodiumName height={1}>{this.props.leaderboard[2].nickname}</PodiumName>
-									<PodiumScore height={1}>{this.parseScore(this.props.leaderboard[2].score)}</PodiumScore>
-								</>
-							)}
-							<PodiumBar height={1}>
-								<Placement placement={3} />
-							</PodiumBar>
-						</SpotWrapper>
-					</Podium>
-					<List>
-						<LeaderboardHeader>
-							<HeaderPlacement>#</HeaderPlacement>
-							<HeaderName>{this.props.translations.nickname}</HeaderName>
-							<HeaderPoints>{this.props.translations.score}</HeaderPoints>
-						</LeaderboardHeader>
-						{this.props.leaderboard.slice(3, 10).map((p, index) => {
-							return (
-								/* eslint-disable-next-line react/no-array-index-key */
-								<ListItem key={index} data-cy="leaderboard-item">
-									<ItemPlacement>{index + 4}</ItemPlacement>
-									<ItemName>{p.nickname}</ItemName>
-									<ItemPoints>{this.parseScore(p.score)}</ItemPoints>
-								</ListItem>
-							)
-						})}
-					</List>
-				</Wrapper>
-			)
+			<Wrapper>
+				{this.props.leaderboard && (
+					<>
+						<Podium>
+							<SpotWrapper>
+								{this.props.leaderboard[1] && (
+									<>
+										<PodiumName height={1.5}>{this.props.leaderboard[1].nickname}</PodiumName>
+										<PodiumScore height={1.5}>{this.parseScore(this.props.leaderboard[1].score)}</PodiumScore>
+									</>
+								)}
+								<PodiumBar height={1.5}>
+									<Placement placement={2} />
+								</PodiumBar>
+							</SpotWrapper>
+							<SpotWrapper>
+								{this.props.leaderboard[0].score ? (
+									<>
+										<PodiumName height={2}>{this.props.leaderboard[0].nickname}</PodiumName>
+										<PodiumScore height={2}>{this.parseScore(this.props.leaderboard[0].score)}</PodiumScore>
+									</>
+								) : (
+									<PodiumWarning height={2}>{this.props.translations.noHighscore}</PodiumWarning>
+								)}
+								<PodiumBar height={2}>
+									<Placement placement={1} />
+								</PodiumBar>
+							</SpotWrapper>
+							<SpotWrapper>
+								{this.props.leaderboard[2] && (
+									<>
+										<PodiumName height={1}>{this.props.leaderboard[2].nickname}</PodiumName>
+										<PodiumScore height={1}>{this.parseScore(this.props.leaderboard[2].score)}</PodiumScore>
+									</>
+								)}
+								<PodiumBar height={1}>
+									<Placement placement={3} />
+								</PodiumBar>
+							</SpotWrapper>
+						</Podium>
+						<List>
+							<LeaderboardHeader>
+								<HeaderPlacement>#</HeaderPlacement>
+								<HeaderName>{this.props.translations.nickname}</HeaderName>
+								<HeaderPoints>{this.props.translations.score}</HeaderPoints>
+							</LeaderboardHeader>
+							{this.props.leaderboard.slice(3, 10).map((p, index) => {
+								return (
+									/* eslint-disable-next-line react/no-array-index-key */
+									<ListItem key={index}>
+										<ItemPlacement>{index + 4}</ItemPlacement>
+										<ItemName>{p.nickname}</ItemName>
+										<ItemPoints>{this.parseScore(p.score)}</ItemPoints>
+									</ListItem>
+								)
+							})}
+						</List>
+					</>
+				)}
+			</Wrapper>
 		)
 	}
 }
