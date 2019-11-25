@@ -2,6 +2,7 @@ import React from "react"
 import { WrapperComponent } from "../theme"
 import { LeaderboardRow } from "../types/leaderboard"
 import { LeaderboardList } from "./list"
+import { LeaderboardModule, LeaderboardModuleProps } from "./module"
 import { LeaderboardTranslation, LeaderboardTranslations } from "./translations"
 
 type LeaderboardProps = {
@@ -13,11 +14,15 @@ export function LeaderboardListComponent(props: LeaderboardProps) {
 	const { translations, ...restprops } = props
 	return (
 		<WrapperComponent>
-			<LeaderboardList {...restprops} translations={{ ...LeaderboardTranslations, ...translations } as LeaderboardTranslation} />
+			<LeaderboardList {...restprops} translations={{ ...LeaderboardTranslations, ...translations }} />
 		</WrapperComponent>
 	)
 }
 
-type LeaderboardModuleProps = {}
-
-export function LeaderboardModuleComponent(props: LeaderboardModuleProps) {}
+export function LeaderboardModuleComponent(props: LeaderboardModuleProps) {
+	return (
+		<WrapperComponent>
+			<LeaderboardModule {...props} translations={{ ...LeaderboardTranslations, ...props.translations }} />
+		</WrapperComponent>
+	)
+}

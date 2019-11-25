@@ -1,0 +1,28 @@
+---
+name: Module
+route: /leaderboard/module
+menu: Leaderboard
+edit: false
+---
+
+import { Playground, Props } from "docz"
+import { LeaderboardModuleComponent } from "../../src"
+import { Leaderboard } from "./data"
+
+# Leaderboard Module Component
+
+Use this component to integrate a Leaderboard Module
+
+<Playground>
+	<div style={{ width: "100%", maxWidth: "550px", height: "650px", margin: "auto" }}>
+		<LeaderboardModuleComponent
+			columns={["xpGained", "coinGained", "levelsGained"]}
+			active="xpGained"
+			leaderboard={Leaderboard}
+			select={(column, timespan) => console.log("select", column, timespan)}
+			updateNickname={(nickname) => console.log("nickname", nickname)}
+		 />
+	</div>
+</Playground>
+
+<Props of={LeaderboardModuleComponent} />

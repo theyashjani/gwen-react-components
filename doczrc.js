@@ -2,6 +2,7 @@ export default {
 	typescript: true,
 	title: "InsertCoin - GWEN React Components",
 	description: "",
+	hashRouter: true,
 	themeConfig: {
 		mode: "dark",
 		showPlaygroundEditor: true,

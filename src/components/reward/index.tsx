@@ -1,23 +1,31 @@
 import React from "react"
 import styled from "styled-components"
 import { Currency, RewardData } from "../../types/reward"
+import { GenericTranslation } from "../translations"
 import { Reward } from "./wrapper"
 
 interface Props {
 	rewards: RewardData[]
-	rewardsTranslation: string
 	size?: number
 	icons?: Partial<Record<Currency, string>>
+	translations: GenericTranslation
 }
 
 export function Rewards(props: Props) {
 	return (
 		<Wrapper>
-			<RewardText>{props.rewardsTranslation}:</RewardText>
+			<RewardText>{props.translations.rewards}:</RewardText>
 			<Upgrade>
 				{/* eslint-disable react/no-array-index-key */}
 				{props.rewards.map((reward, key) => (
-					<Reward key={key} size={props.size} amount={reward.amount} type={reward.currency} icon={props.icons && props.icons[reward.currency]} />
+					<Reward
+						key={key}
+						size={props.size}
+						amount={reward.amount}
+						type={reward.currency}
+						icon={props.icons && props.icons[reward.currency]}
+						description={props.translations[reward.currency]}
+					/>
 				))}
 			</Upgrade>
 		</Wrapper>

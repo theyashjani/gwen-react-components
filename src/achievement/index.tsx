@@ -19,12 +19,7 @@ export function AchievementModuleComponent(props: ModuleProps) {
 	return (
 		<WrapperComponent scale={scale}>
 			{achievements && (
-				<AchievementModule
-					{...restprops}
-					achievements={achievements}
-					scale={scale || 1}
-					translations={{ ...AchievementTranslations, ...translations } as AchievementTranslation}
-				/>
+				<AchievementModule {...restprops} achievements={achievements} scale={scale || 1} translations={{ ...AchievementTranslations, ...translations }} />
 			)}
 		</WrapperComponent>
 	)
