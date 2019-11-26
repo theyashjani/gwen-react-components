@@ -35,7 +35,7 @@ export class LeaderboardList extends React.PureComponent<Props> {
 								</PodiumBar>
 							</SpotWrapper>
 							<SpotWrapper>
-								{this.props.leaderboard[0].score ? (
+								{this.props.leaderboard[0] ? (
 									<>
 										<PodiumName height={2}>{this.props.leaderboard[0].nickname}</PodiumName>
 										<PodiumScore height={2}>{this.parseScore(this.props.leaderboard[0].score)}</PodiumScore>
