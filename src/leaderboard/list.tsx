@@ -23,7 +23,7 @@ export class LeaderboardList extends React.PureComponent<Props> {
 				{this.props.leaderboard && (
 					<>
 						<Podium>
-							<SpotWrapper>
+							<SpotWrapper data-cy="leaderboard-podium-spot">
 								{this.props.leaderboard[1] && (
 									<>
 										<PodiumName height={1.5}>{this.props.leaderboard[1].nickname}</PodiumName>
@@ -34,7 +34,7 @@ export class LeaderboardList extends React.PureComponent<Props> {
 									<Placement placement={2} />
 								</PodiumBar>
 							</SpotWrapper>
-							<SpotWrapper>
+							<SpotWrapper data-cy="leaderboard-podium-spot">
 								{this.props.leaderboard[0] ? (
 									<>
 										<PodiumName height={2}>{this.props.leaderboard[0].nickname}</PodiumName>
@@ -47,7 +47,7 @@ export class LeaderboardList extends React.PureComponent<Props> {
 									<Placement placement={1} />
 								</PodiumBar>
 							</SpotWrapper>
-							<SpotWrapper>
+							<SpotWrapper data-cy="leaderboard-podium-spot">
 								{this.props.leaderboard[2] && (
 									<>
 										<PodiumName height={1}>{this.props.leaderboard[2].nickname}</PodiumName>
@@ -68,7 +68,7 @@ export class LeaderboardList extends React.PureComponent<Props> {
 							{this.props.leaderboard.slice(3, 10).map((p, index) => {
 								return (
 									/* eslint-disable-next-line react/no-array-index-key */
-									<ListItem key={index}>
+									<ListItem key={index} data-cy="leaderboard-item">
 										<ItemPlacement>{index + 4}</ItemPlacement>
 										<ItemName>{p.nickname}</ItemName>
 										<ItemPoints>{this.parseScore(p.score)}</ItemPoints>

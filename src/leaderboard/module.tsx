@@ -45,21 +45,22 @@ export class LeaderboardModule extends React.PureComponent<LeaderboardModuleProp
 							<b>{this.props.translations.myScore}:</b>
 							<PlayerName>
 								<PlayerNameInput
+									data-cy="leaderboard-input-edit"
 									value={this.state.editingNickname}
 									disabled={!this.state.editing}
 									onChange={(event) => this.setState({ editingNickname: event.target.value })}
 									placeholder={this.props.translations.anonymous}
 								/>
 								{this.state.editing ? (
-									<EditButton onClick={() => this.props.updateNickname(this.state.editingNickname || "")}>
+									<EditButton data-cy="leaderboard-button-save" onClick={() => this.props.updateNickname(this.state.editingNickname || "")}>
 										<img src="https://gwen.insertcoin.se/widget/images/icons/save.svg" alt="checkmark" />
 									</EditButton>
 								) : (
-									<EditButton onClick={() => this.setState({ editing: true })}>
+									<EditButton data-cy="leaderboard-button-edit" onClick={() => this.setState({ editing: true })}>
 										<Edit />
 									</EditButton>
 								)}
-								<span>{this.props.currentUser?.score ?? 0}</span>
+								<span data-cy="leaderboard-current-user-score">{this.props.currentUser?.score ?? 0}</span>
 							</PlayerName>
 						</PlayerScoreWrapper>
 						<TimeToggle>

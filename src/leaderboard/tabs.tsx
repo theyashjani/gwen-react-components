@@ -13,7 +13,12 @@ export function Tabs(props: Props) {
 			<TabsHeader>
 				{props.items &&
 					props.items.map((item) => (
-						<div key={item.value} className={item.value === props.value ? "active" : ""} onClick={() => props.onChange(item.value)}>
+						<div
+							key={item.value}
+							className={item.value === props.value ? "active" : ""}
+							onClick={() => props.onChange(item.value)}
+							data-cy={`tab-${item.value}`}
+						>
 							<div>
 								<span>{item.text}</span>
 							</div>
