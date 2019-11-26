@@ -8,7 +8,7 @@ interface Props {
 
 export function Switch(props: Props) {
 	return (
-		<SwitchWrapper onClick={() => props.onChange(!props.value)} value={props.value}>
+		<SwitchWrapper onClick={() => props.onChange(!props.value)} value={props.value} data-cy="switch">
 			<div />
 		</SwitchWrapper>
 	)
