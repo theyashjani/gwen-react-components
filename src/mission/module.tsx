@@ -9,6 +9,7 @@ import { MissionTranslation } from "./translations"
 
 export interface MissionModuleProps {
 	translations: MissionTranslation
+	current?: number
 	mission?: MissionData
 	themes: MissionThemeData[]
 	select?: (mission: number) => void
@@ -29,7 +30,7 @@ export function MissionModule(props: MissionModuleProps) {
 				{props.mission && <MissionDetails mission={props.mission} translations={props.translations} rewardIcons={props.rewardIcons} />}
 			</ModuleWrapperLeft>
 			<ModuleWrapperRight>
-				<MissionMap themes={props.themes} select={props.select} current={props.mission?.missionNumber} />
+				<MissionMap themes={props.themes} select={props.select} current={props.current} />
 			</ModuleWrapperRight>
 		</ModuleWrapper>
 	)
