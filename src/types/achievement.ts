@@ -7,6 +7,8 @@ export interface AchievementData {
 	readonly title: string
 	readonly description: string
 	readonly icon?: string
+	readonly completed?: Date
+	readonly rewards: RewardData[]
 }
 
 export interface AchievementTierData {
