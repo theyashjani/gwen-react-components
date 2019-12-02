@@ -58,6 +58,7 @@ const AchievementWrapper = styled.div`
 	flex: 1;
 	background: ${(p: AchievementWrapperProps) => p.theme.gwen.colors.background.default};
 	box-shadow: ${(p: AchievementWrapperProps) => (p.active ? p.theme.gwen.boxShadow.default : "")};
+	overflow: hidden;
 `
 
 const Title = styled.div`
