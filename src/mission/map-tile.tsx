@@ -8,7 +8,7 @@ interface Props {
 	mission: number
 	disabled: boolean
 	tiles: Tiles
-	select?: (mission: number) => void
+	select: (mission: number) => void
 	height: number
 }
 
@@ -19,14 +19,8 @@ export class MissionMapTile extends React.PureComponent<Props> {
 		return mission === 0 ? 50 : seed.random() * (100 - padding * 2) + padding
 	}
 
-	select(mission: number) {
-		if (this.props.select) {
-			this.props.select(mission)
-		}
-	}
-
 	render() {
-		const size = this.props.height * 0.45 // proportion(56)
+		const size = this.props.height * 0.45
 		const missionNumber = this.props.mission
 		const start = this.calculatePosition(missionNumber)
 		const end = this.calculatePosition(missionNumber + 1)
@@ -49,7 +43,7 @@ export class MissionMapTile extends React.PureComponent<Props> {
 							/>
 						</MissionPath>
 						<Dot
-							onClick={() => (!this.props.disabled && missionNumber ? this.select(missionNumber) : null)}
+							onClick={() => (!this.props.disabled && missionNumber ? this.props.select(missionNumber) : null)}
 							size={size}
 							current={this.props.current}
 							disabled={this.props.disabled}

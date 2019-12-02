@@ -29,6 +29,13 @@ export class MissionMap extends React.PureComponent<Props, State> {
 		return null
 	}
 
+	select(mission: number) {
+		this.setState({ selected: mission })
+		if (this.props.select) {
+			this.props.select(mission)
+		}
+	}
+
 	render() {
 		const cache = new CellMeasurerCache({ fixedHeight: true, fixedWidth: true })
 		const current = this.props.current || 1
@@ -55,11 +62,11 @@ export class MissionMap extends React.PureComponent<Props, State> {
 										<CellMeasurer cache={cache} columnIndex={0} key={item.index} parent={item.parent} rowIndex={item.index}>
 											<div style={item.style}>
 												<MissionMapTile
-													current={mission === current}
+													current={mission === (this.state.selected || this.props.current)}
 													mission={mission}
 													disabled={mission > current}
 													tiles={tiles}
-													select={this.props.select}
+													select={(m) => this.select(m)}
 													height={width / 2}
 												/>
 											</div>
