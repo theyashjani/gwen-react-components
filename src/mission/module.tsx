@@ -27,7 +27,7 @@ export function MissionModule(props: MissionModuleProps) {
 					</>
 				}
 			>
-				{props.mission && <MissionDetails mission={props.mission} translations={props.translations} rewardIcons={props.rewardIcons} />}
+				{props.mission && <MissionDetails scale={props.scale} mission={props.mission} translations={props.translations} rewardIcons={props.rewardIcons} />}
 			</ModuleWrapperLeft>
 			<ModuleWrapperRight>
 				<MissionMap themes={props.themes} select={props.select} current={props.current} />

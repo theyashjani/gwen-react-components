@@ -34,7 +34,7 @@ export class Profile extends React.PureComponent<ProfileProps> {
 				<SecondaryText>{translations.xpUntilNextLevel}</SecondaryText>
 				<ExperienceLeft>{data ? data.levelXp - data.currentXp : ""}</ExperienceLeft>
 				{data && data.rewards.length > 0 && (
-					<Rewards rewards={data.rewards} translations={translations} icons={this.props.rewardIcons} size={this.props.scale * 80} />
+					<Rewards rewards={data.rewards} translations={translations} icons={this.props.rewardIcons} scale={this.props.scale} />
 				)}
 			</Wrapper>
 		)

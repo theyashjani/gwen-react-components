@@ -6,7 +6,7 @@ import { Reward } from "./wrapper"
 
 interface Props {
 	rewards: RewardData[]
-	size?: number
+	scale?: number
 	icons?: Partial<Record<Currency, string>>
 	translations: GenericTranslation
 }
@@ -20,7 +20,7 @@ export function Rewards(props: Props) {
 				{props.rewards.map((reward, key) => (
 					<Reward
 						key={key}
-						size={props.size}
+						size={(props.scale || 1) * 80}
 						amount={reward.amount}
 						type={reward.currency}
 						icon={props.icons && props.icons[reward.currency]}
