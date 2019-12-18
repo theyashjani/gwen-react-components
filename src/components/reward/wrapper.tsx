@@ -75,17 +75,17 @@ const Amount = styled.div`
 	span {
 		display: inline-block;
 		margin: auto;
-		background: ${(p) => p.theme.colors.background.badge};
+		background: ${(p) => p.theme.gwen.colors.background.badge};
 		font-size: ${(p: SizeProps) => p.theme.proportions(p.size * 0.175)}px;
 		line-height: ${(p: SizeProps) => p.theme.proportions(p.size * 0.2)}px;
 		padding: ${(p: SizeProps) => p.theme.proportions(p.size * 0.075)}px ${(p) => p.theme.proportions(p.size * 0.125)}px;
 		border-radius: ${(p: SizeProps) => p.theme.proportions(p.size * 0.075)}px;
-		box-shadow: ${(p) => p.theme.boxShadow.default};
+		box-shadow: ${(p) => p.theme.gwen.boxShadow.default(p.theme.scale)};
 	}
 `
 const Description = styled.div`
 	display: flex;
-	color: ${(p) => p.theme.colors.text.secondary};
+	color: ${(p) => p.theme.gwen.colors.text.secondary};
 	font-size: ${(p: SizeProps) => p.theme.proportions(p.size * 0.175)}px;
 	line-height: ${(p: SizeProps) => p.theme.proportions(p.size * 0.175)}px;
 	font-weight: 400;
@@ -115,11 +115,11 @@ const EasterEgg = styled.i`
 	}
 	&:before {
 		top: 50%;
-		border-top: 0 solid ${(p) => p.theme.colors.background.default};
+		border-top: 0 solid ${(p) => p.theme.gwen.colors.background.default};
 	}
 	&:after {
 		bottom: 50%;
-		border-bottom: 0 solid ${(p) => p.theme.colors.background.default};
+		border-bottom: 0 solid ${(p) => p.theme.gwen.colors.background.default};
 	}
 	@keyframes eatAnimation {
 		0% {

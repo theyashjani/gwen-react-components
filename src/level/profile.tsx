@@ -50,7 +50,7 @@ const LevelWrapper = styled.div`
 const SecondaryText = styled.div`
 	font-size: ${(p) => p.theme.proportions(18)}px;
 	line-height: ${(p) => p.theme.proportions(24)}px;
-	color: ${(p) => p.theme.colors.text.secondary};
+	color: ${(p) => p.theme.gwen.colors.text.secondary};
 	font-weight: bold;
 	padding: 0 ${(p) => p.theme.proportions(20)}px;
 	margin-top: -${(p) => p.theme.proportions(4)}px;

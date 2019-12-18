@@ -28,8 +28,8 @@ const InputWrapper = styled.div`
 	margin: 0;
 	input {
 		width: 100%;
-		background: ${(p) => p.theme.colors.background.header};
-		color: ${(p) => p.theme.colors.text.primary};
+		background: ${(p) => p.theme.gwen.colors.background.header};
+		color: ${(p) => p.theme.gwen.colors.text.primary};
 		border: none;
 		outline: none;
 		outline-offset: 0;

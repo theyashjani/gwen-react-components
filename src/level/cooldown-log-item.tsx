@@ -64,10 +64,10 @@ export class CooldownLogItem extends PureComponent<Props, State> {
 const CooldownLogWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
-	background: ${(p) => p.theme.colors.background.header};
+	background: ${(p) => p.theme.gwen.colors.background.header};
 	margin: ${(p) => p.theme.proportions(10)}px;
 	padding: ${(p) => p.theme.proportions(8)}px ${(p) => p.theme.proportions(12)}px;
-	box-shadow: ${(p) => p.theme.boxShadow.default};
+	box-shadow: ${(p) => p.theme.gwen.boxShadow.default(p.theme.scale)};
 `
 
 const CooldownTitle = styled.div`
@@ -76,5 +76,5 @@ const CooldownTitle = styled.div`
 `
 
 const CooldownTime = styled.div`
-	color: ${(p) => p.theme.colors.text.secondary};
+	color: ${(p) => p.theme.gwen.colors.text.secondary};
 `

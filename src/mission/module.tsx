@@ -37,5 +37,5 @@ export function MissionModule(props: MissionModuleProps) {
 }
 
 const MissionNumber = styled.span`
-	color: ${(p) => p.theme.colors.primary};
+	color: ${(p) => p.theme.gwen.colors.primary};
 `

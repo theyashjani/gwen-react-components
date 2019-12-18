@@ -86,7 +86,7 @@ export class LeaderboardList extends React.PureComponent<Props> {
 const Wrapper = styled.div`
 	position: relative;
 	width: 100%;
-	background: ${(p) => p.theme.colors.background.default};
+	background: ${(p) => p.theme.gwen.colors.background.default};
 `
 interface PodiumProps {
 	theme: DefaultTheme
@@ -131,8 +131,8 @@ const PodiumBar = styled.div`
 	padding: ${(p) => p.theme.proportions(8)}px;
 
 	font-size: ${(p) => p.theme.proportions(20)}px;
-	background: ${(p) => p.theme.colors.background.podium};
-	color: ${(p) => p.theme.colors.text.success};
+	background: ${(p) => p.theme.gwen.colors.background.podium};
+	color: ${(p) => p.theme.gwen.colors.text.success};
 	> img {
 		width: 70%;
 	}
@@ -141,7 +141,7 @@ const PodiumBar = styled.div`
 const List = styled.div`
 	width: 100%;
 	height: ${(p) => p.theme.proportions(300)}px;
-	border-top: ${(p) => p.theme.border.default};
+	border-top: ${(p) => p.theme.gwen.border.default(p.theme.scale)};
 `
 
 const LeaderboardHeader = styled.div`
@@ -149,9 +149,9 @@ const LeaderboardHeader = styled.div`
 	height: calc(100% / 8);
 	line-height: ${(p) => p.theme.proportions(35)}px;
 	width: 100%;
-	border-bottom: ${(p) => p.theme.border.default};
-	background: ${(p) => p.theme.colors.background.header};
-	color: ${(p) => p.theme.colors.text.secondary};
+	border-bottom: ${(p) => p.theme.gwen.border.default(p.theme.scale)};
+	background: ${(p) => p.theme.gwen.colors.background.header};
+	color: ${(p) => p.theme.gwen.colors.text.secondary};
 `
 const HeaderPlacement = styled.div`
 	width: 10%;
@@ -171,7 +171,7 @@ const HeaderPoints = styled.div`
 
 const ListItem = styled(LeaderboardHeader)`
 	background: transparent;
-	color: ${(p) => p.theme.colors.text.primary};
+	color: ${(p) => p.theme.gwen.colors.text.primary};
 	border: none;
 	&:nth-child(2n + 1) {
 		background: rgba(0, 0, 0, 0.05);

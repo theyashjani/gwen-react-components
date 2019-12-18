@@ -50,16 +50,16 @@ interface ObjectiveHeaderProps {
 }
 const ObjectiveHeader = styled.div`
 	position: relative;
-	background: ${(p) => p.theme.colors.background.header};
+	background: ${(p) => p.theme.gwen.colors.background.header};
 	height: ${(p) => (p.cta ? p.theme.proportions(80) : p.theme.proportions(45))}px;
-	box-shadow: ${(props) => props.theme.boxShadow.default};
+	box-shadow: ${(props) => props.theme.gwen.boxShadow.default(props.theme.scale)};
 	z-index: 1;
 	path {
-		fill: ${(p: ObjectiveHeaderProps) => (p.completed ? p.theme.colors.success : p.theme.colors.inactive)};
+		fill: ${(p: ObjectiveHeaderProps) => (p.completed ? p.theme.gwen.colors.success : p.theme.gwen.colors.inactive)};
 	}
 	&:hover {
 		path {
-			${(p) => (!p.completed ? `fill: ${p.theme.colors.primary}` : "")};
+			${(p) => (!p.completed ? `fill: ${p.theme.gwen.colors.primary}` : "")};
 		}
 	}
 `
@@ -82,11 +82,11 @@ const ButtonWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-top: ${(p) => p.theme.border.default};
+	border-top: ${(p) => p.theme.gwen.border.default(p.theme.scale)};
 	font-size: ${(p) => p.theme.proportions(16)}px;
 	font-weight: 600;
 	height: ${(p) => p.theme.proportions(34)}px;
-	background: ${(p) => p.theme.colors.background.header};
+	background: ${(p) => p.theme.gwen.colors.background.header};
 	cursor: pointer;
 `
 
@@ -106,6 +106,6 @@ const Checkmark = styled(Check)`
 	height: ${(p) => p.theme.proportions(45)}px;
 	top: 0;
 	path {
-		fill: ${(p) => p.theme.colors.success};
+		fill: ${(p) => p.theme.gwen.colors.success};
 	}
 `

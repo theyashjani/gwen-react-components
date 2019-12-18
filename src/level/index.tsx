@@ -22,7 +22,7 @@ interface Props {
 export function LevelModuleComponent(props: Props & { rewardIcons: RewardIcons }) {
 	const { translations, scale, ...restprops } = props
 	return (
-		<WrapperComponent themeOptions={{ scale }}>
+		<WrapperComponent scale={scale}>
 			<LevelModule {...restprops} scale={scale || 1} translations={{ ...LevelTranslations, ...translations }} />
 		</WrapperComponent>
 	)
@@ -31,7 +31,7 @@ export function LevelModuleComponent(props: Props & { rewardIcons: RewardIcons }
 export function LevelProfileComponent(props: Omit<Props, "cooldowns" | "log"> & { badge?: boolean }) {
 	const { translations, scale, ...restprops } = props
 	return (
-		<WrapperComponent themeOptions={{ scale }}>
+		<WrapperComponent scale={scale}>
 			<LevelCircle size={(scale || 1) * 160} {...restprops} translations={{ ...LevelTranslations, ...translations }} />
 		</WrapperComponent>
 	)
@@ -40,7 +40,7 @@ export function LevelProfileComponent(props: Omit<Props, "cooldowns" | "log"> & 
 export function LevelStatusComponent(props: Omit<Props, "data" | "selectAvatar">) {
 	const { translations, scale, ...restprops } = props
 	return (
-		<WrapperComponent themeOptions={{ scale }}>
+		<WrapperComponent scale={scale}>
 			<Status {...restprops} scale={scale || 1} translations={{ ...LevelTranslations, ...translations }} />
 		</WrapperComponent>
 	)
@@ -57,7 +57,7 @@ export interface LevelSelectAvatarProps {
 export function LevelSelectAvatarComponent(props: LevelSelectAvatarProps) {
 	const { scale, ...restprops } = props
 	return (
-		<WrapperComponent themeOptions={{ scale }}>
+		<WrapperComponent scale={scale}>
 			<SelectAvatar {...restprops} scale={scale || 1} />
 		</WrapperComponent>
 	)
@@ -65,7 +65,7 @@ export function LevelSelectAvatarComponent(props: LevelSelectAvatarProps) {
 
 export function LevelBadgeComponent(props: { level: number; text?: string; scale?: number }) {
 	return (
-		<WrapperComponent themeOptions={{ scale: props.scale }}>
+		<WrapperComponent scale={props.scale}>
 			<LevelBadge level={props.level} size={(props.scale || 1) * 160} text={props.text || LevelTranslations.level} />
 		</WrapperComponent>
 	)
