@@ -5,9 +5,9 @@ import { Currency } from "../../types/reward"
 interface Props {
 	type: Currency
 	amount?: number
-	size?: number
 	icon?: string
 	description?: string
+	size?: number
 }
 interface State {
 	clicks: number
@@ -49,17 +49,18 @@ interface WrapperProps {
 const Wrapper = styled.div`
 	position: relative;
 	margin: auto;
-	margin-top: ${(p: WrapperProps) => (p.amount ? `${p.size * 0.2}px` : "0")};
-	margin-bottom: ${(p: WrapperProps) => p.size * 0.3}px;
+	margin-top: ${(p: WrapperProps) => (p.amount ? `${p.theme.proportions(p.size * 0.2)}px` : "0")};
+	margin-bottom: ${(p: WrapperProps) => p.theme.proportions(p.size * 0.3)}px;
 	border-radius: 100%;
-	width: ${(p: WrapperProps) => p.size}px;
-	height: ${(p: WrapperProps) => p.size}px;
+	width: ${(p: WrapperProps) => p.theme.proportions(p.size)}px;
+	height: ${(p: WrapperProps) => p.theme.proportions(p.size)}px;
 	user-select: none;
 `
 interface SizeProps {
 	theme: DefaultTheme
 	size: number
 }
+
 const Icon = styled.img`
 	display: block;
 	width: ${(props: SizeProps) => props.theme.proportions(props.size)}px;
@@ -74,21 +75,21 @@ const Amount = styled.div`
 	span {
 		display: inline-block;
 		margin: auto;
-		background: ${(p) => p.theme.gwen.colors.background.badge};
-		font-size: ${(p: SizeProps) => p.size * 0.175}px;
-		line-height: ${(p: SizeProps) => p.size * 0.2}px;
-		padding: ${(p: SizeProps) => p.size * 0.075}px ${(p) => p.size * 0.125}px;
-		border-radius: ${(p: SizeProps) => p.size * 0.075}px;
-		box-shadow: ${(p) => p.theme.gwen.boxShadow.default};
+		background: ${(p) => p.theme.colors.background.badge};
+		font-size: ${(p: SizeProps) => p.theme.proportions(p.size * 0.175)}px;
+		line-height: ${(p: SizeProps) => p.theme.proportions(p.size * 0.2)}px;
+		padding: ${(p: SizeProps) => p.theme.proportions(p.size * 0.075)}px ${(p) => p.theme.proportions(p.size * 0.125)}px;
+		border-radius: ${(p: SizeProps) => p.theme.proportions(p.size * 0.075)}px;
+		box-shadow: ${(p) => p.theme.boxShadow.default};
 	}
 `
 const Description = styled.div`
 	display: flex;
-	color: ${(p) => p.theme.gwen.colors.text.secondary};
-	font-size: ${(p: SizeProps) => p.size * 0.175}px;
-	line-height: ${(p: SizeProps) => p.size * 0.175}px;
+	color: ${(p) => p.theme.colors.text.secondary};
+	font-size: ${(p: SizeProps) => p.theme.proportions(p.size * 0.175)}px;
+	line-height: ${(p: SizeProps) => p.theme.proportions(p.size * 0.175)}px;
 	font-weight: 400;
-	margin-top: ${(p: SizeProps) => p.size * 0.075}px;
+	margin-top: ${(p: SizeProps) => p.theme.proportions(p.size * 0.075)}px;
 	text-transform: capitalize;
 	white-space: nowrap;
 	justify-content: center;
@@ -110,15 +111,15 @@ const EasterEgg = styled.i`
 		width: 0;
 		height: 0;
 		animation: eatAnimation 1s infinite;
-		border-left: ${(p: SizeProps) => p.size / 2}px solid transparent;
+		border-left: ${(p: SizeProps) => p.theme.proportions(p.size * 0.5)}px solid transparent;
 	}
 	&:before {
 		top: 50%;
-		border-top: 0 solid ${(p) => p.theme.gwen.colors.background.default};
+		border-top: 0 solid ${(p) => p.theme.colors.background.default};
 	}
 	&:after {
 		bottom: 50%;
-		border-bottom: 0 solid ${(p) => p.theme.gwen.colors.background.default};
+		border-bottom: 0 solid ${(p) => p.theme.colors.background.default};
 	}
 	@keyframes eatAnimation {
 		0% {
@@ -126,8 +127,8 @@ const EasterEgg = styled.i`
 			border-bottom-width: 0;
 		}
 		50% {
-			border-top-width: ${(p: SizeProps) => p.size / 2}px;
-			border-bottom-width: ${(p: SizeProps) => p.size / 2}px;
+			border-top-width: ${(p: SizeProps) => p.theme.proportions(p.size * 0.5)}px;
+			border-bottom-width: ${(p: SizeProps) => p.theme.proportions(p.size * 0.5)}px;
 		}
 		100% {
 			border-top-width: 0;

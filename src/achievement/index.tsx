@@ -17,7 +17,7 @@ interface ModuleProps {
 export function AchievementModuleComponent(props: ModuleProps) {
 	const { translations, scale, achievements, ...restprops } = props
 	return (
-		<WrapperComponent scale={scale}>
+		<WrapperComponent themeOptions={{ scale }}>
 			{achievements && (
 				<AchievementModule {...restprops} achievements={achievements} scale={scale || 1} translations={{ ...AchievementTranslations, ...translations }} />
 			)}
@@ -35,7 +35,7 @@ interface BoxProps {
 export function AchievementBoxComponent(props: BoxProps) {
 	const { scale, ...restprops } = props
 	return (
-		<WrapperComponent scale={scale}>
+		<WrapperComponent themeOptions={{ scale }}>
 			<AchievementBox {...restprops} />
 		</WrapperComponent>
 	)
@@ -51,7 +51,7 @@ interface TiersProps {
 export function AchievementTiersComponent(props: TiersProps) {
 	const { translations, scale, ...restprops } = props
 	return (
-		<WrapperComponent scale={scale}>
+		<WrapperComponent themeOptions={{ scale }}>
 			<AchievementTiers {...restprops} />
 		</WrapperComponent>
 	)

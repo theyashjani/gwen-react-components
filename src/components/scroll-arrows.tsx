@@ -41,8 +41,8 @@ const ArrowBox = styled.div`
 	justify-content: center;
 	width: 100%;
 	height: ${(p) => p.theme.proportions(25)}px;
-	background: ${(p) => p.theme.gwen.colors.background.header};
-	box-shadow: ${(p) => p.theme.gwen.boxShadow.large};
+	background: ${(p) => p.theme.colors.background.header};
+	box-shadow: ${(p) => p.theme.boxShadow.large};
 	img {
 		height: ${(p) => p.theme.proportions(10)}px;
 	}

@@ -59,7 +59,7 @@ const IconWrapper = styled.div`
 	flex: ${(p: IconWrapperProps) => (p.selected ? 2 : 1)};
 	${(p: IconWrapperProps) => (p.greyscale ? "filter: grayscale(100%);" : "")}
 	transition: 0.3s ease-in-out;
-	border-right: ${(p) => p.theme.gwen.border.default};
+	border-right: ${(p) => p.theme.border.default};
 	:last-child {
 		border-right: none;
 	}

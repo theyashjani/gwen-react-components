@@ -21,7 +21,7 @@ export function MissionMapComponent(props: MissionMapComponentProps) {
 
 export function MissionModuleComponent(props: MissionModuleProps) {
 	return (
-		<WrapperComponent scale={props.scale}>
+		<WrapperComponent themeOptions={{ scale: props.scale }}>
 			<MissionModule {...props} translations={{ ...MissionTranslations, ...props.translations }} />
 		</WrapperComponent>
 	)

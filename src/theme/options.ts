@@ -5,4 +5,5 @@ export interface ThemeOptions {
 	fontFamilyUrl?: string
 	primaryColor?: string
 	secondaryColor?: string
+	scale?: number
 }

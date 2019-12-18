@@ -33,9 +33,7 @@ export class Profile extends React.PureComponent<ProfileProps> {
 				<hr />
 				<SecondaryText>{translations.xpUntilNextLevel}</SecondaryText>
 				<ExperienceLeft>{data ? data.levelXp - data.currentXp : ""}</ExperienceLeft>
-				{data && data.rewards.length > 0 && (
-					<Rewards rewards={data.rewards} translations={translations} icons={this.props.rewardIcons} scale={this.props.scale} />
-				)}
+				{data && data.rewards.length > 0 && <Rewards rewards={data.rewards} translations={translations} icons={this.props.rewardIcons} />}
 			</Wrapper>
 		)
 	}
@@ -52,7 +50,7 @@ const LevelWrapper = styled.div`
 const SecondaryText = styled.div`
 	font-size: ${(p) => p.theme.proportions(18)}px;
 	line-height: ${(p) => p.theme.proportions(24)}px;
-	color: ${(p) => p.theme.gwen.colors.text.secondary};
+	color: ${(p) => p.theme.colors.text.secondary};
 	font-weight: bold;
 	padding: 0 ${(p) => p.theme.proportions(20)}px;
 	margin-top: -${(p) => p.theme.proportions(4)}px;

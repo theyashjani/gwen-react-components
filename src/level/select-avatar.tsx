@@ -78,11 +78,11 @@ const Avatar = styled.div`
 	max-width: ${(p) => p.theme.proportions(156)}px;
 	height: ${(p) => p.theme.proportions(156)}px;
 
-	border: ${(p) => p.theme.proportions(10)}px solid ${(p) => p.theme.gwen.colors.background.backdrop};
+	border: ${(p) => p.theme.proportions(10)}px solid ${(p) => p.theme.colors.background.backdrop};
 	border-radius: 100%;
 	transition: 0.2s ease-in-out;
 	cursor: pointer;
-	box-shadow: ${(p) => p.theme.gwen.boxShadow.default};
+	box-shadow: ${(p) => p.theme.boxShadow.default};
 	margin: 0 ${(p) => p.theme.proportions(15)}px;
 	img {
 		display: block;
@@ -90,7 +90,7 @@ const Avatar = styled.div`
 		width: 100%;
 	}
 	&:hover {
-		border-color: ${(p) => p.theme.gwen.colors.background.header};
+		border-color: ${(p) => p.theme.colors.background.header};
 	}
 `
 const EmptyAvatar = styled.div`
@@ -104,7 +104,7 @@ const AvatarCheck = styled.div`
 	right: -0px;
 	width: ${(p) => p.theme.proportions(35)}px;
 	height: ${(p) => p.theme.proportions(35)}px;
-	background: ${(p) => p.theme.gwen.colors.background.header};
+	background: ${(p) => p.theme.colors.background.header};
 	font-size: ${(p) => p.theme.proportions(25)}px;
 	padding: ${(p) => p.theme.proportions(4)}px;
 	border-radius: 100%;
@@ -119,6 +119,6 @@ const AvatarCheck = styled.div`
 
 const Checkmark = styled(Check)`
 	path {
-		fill: ${(p) => p.theme.gwen.colors.success};
+		fill: ${(p) => p.theme.colors.success};
 	}
 `

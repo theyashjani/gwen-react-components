@@ -27,7 +27,7 @@ export function MissionModule(props: MissionModuleProps) {
 					</>
 				}
 			>
-				{props.mission && <MissionDetails scale={props.scale} mission={props.mission} translations={props.translations} rewardIcons={props.rewardIcons} />}
+				{props.mission && <MissionDetails mission={props.mission} translations={props.translations} rewardIcons={props.rewardIcons} />}
 			</ModuleWrapperLeft>
 			<ModuleWrapperRight>
 				<MissionMap themes={props.themes} select={props.select} current={props.current} />
@@ -37,5 +37,5 @@ export function MissionModule(props: MissionModuleProps) {
 }
 
 const MissionNumber = styled.span`
-	color: ${(p) => p.theme.gwen.colors.primary};
+	color: ${(p) => p.theme.colors.primary};
 `
