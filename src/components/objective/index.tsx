@@ -22,7 +22,7 @@ export class Objective extends React.Component<ObjectiveProps> {
 		return (
 			<Wrapper>
 				<ObjectiveHeader completed={completed} cta={!!this.props.cta}>
-					<ObjectiveTitle>
+					<ObjectiveTitle length={title.length}>
 						{title}
 						{completed && <Checkmark data-cy="objective-completed" />}
 					</ObjectiveTitle>
@@ -65,6 +65,7 @@ const ObjectiveHeader = styled.div`
 `
 
 interface TitleProps {
+	length: number
 	theme: DefaultTheme
 }
 const ObjectiveTitle = styled.h5`
@@ -72,7 +73,8 @@ const ObjectiveTitle = styled.h5`
 	overflow: hidden;
 	white-space: nowrap;
 	padding: 0 ${(p) => p.theme.proportions(40)}px 0 ${(p) => p.theme.proportions(8)}px;
-	font-size: ${(p: TitleProps) => p.theme.proportions(16)}px;
+	font-size: ${(p: TitleProps) => (p.length > 22 ? p.theme.proportions(12) : p.theme.proportions(16))}px;
+	text-overflow: ellipsis;
 	line-height: ${(p) => p.theme.proportions(45)}px;
 	font-weight: 600;
 	margin: 0;

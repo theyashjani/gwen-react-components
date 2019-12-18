@@ -36,7 +36,7 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: ${(p) => p.theme.proportions(195)}px;
+	height: ${(p) => p.theme.proportions(200)}px;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
