@@ -41,7 +41,7 @@ const Title = styled.h4`
 	line-height: ${(p) => p.theme.proportions(35)}px;
 	font-size: ${(p) => p.theme.proportions(16)}px;
 	font-weight: 400;
-	border-bottom: ${(p) => p.theme.border.default};
+	border-bottom: ${(p) => p.theme.gwen.border.default(p.theme.scale)};
 	margin: 0;
 	margin-bottom: ${(p) => p.theme.proportions(8)}px;
 	text-transform: uppercase;

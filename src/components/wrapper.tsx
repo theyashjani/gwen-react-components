@@ -80,7 +80,7 @@ const ModuleWrapperOuter = styled.div`
 	display: flex;
 	height: 100%;
 	padding: ${(p) => p.theme.proportions(8)}px;
-	background: ${(p) => p.theme.colors.background.backdrop};
+	background: ${(p) => p.theme.gwen.colors.background.backdrop};
 `
 
 const ModuleWrapperFullDiv = styled.div`
@@ -88,7 +88,7 @@ const ModuleWrapperFullDiv = styled.div`
 	margin-right: ${(p) => p.theme.proportions(4)}px;
 	height: 100%;
 	width: 100%;
-	background: ${(p) => p.theme.colors.background.default};
+	background: ${(p) => p.theme.gwen.colors.background.default};
 	overflow: hidden;
 `
 const ModuleWrapperLeftDiv = styled.div`
@@ -96,7 +96,7 @@ const ModuleWrapperLeftDiv = styled.div`
 	height: 100%;
 	flex: 1;
 	margin-right: ${(p) => p.theme.proportions(4)}px;
-	background: ${(p) => p.theme.colors.background.default};
+	background: ${(p) => p.theme.gwen.colors.background.default};
 	overflow: hidden;
 `
 const ModuleWrapperRightDiv = styled.div`
@@ -104,17 +104,17 @@ const ModuleWrapperRightDiv = styled.div`
 	height: 100%;
 	flex: 1;
 	margin-left: ${(p) => p.theme.proportions(4)}px;
-	background: ${(p) => p.theme.colors.background.default};
+	background: ${(p) => p.theme.gwen.colors.background.default};
 	overflow: hidden;
 `
 
 const WrapperTitle = styled.div`
-	background: ${(p) => p.theme.colors.background.header};
+	background: ${(p) => p.theme.gwen.colors.background.header};
 	line-height: ${(p) => p.theme.proportions(55)}px;
 	font-size: ${(p) => p.theme.proportions(20)}px;
 	text-align: center;
 	font-weight: bold;
-	border-bottom: ${(p) => p.theme.border.default};
+	border-bottom: ${(p) => p.theme.gwen.border.default(p.theme.scale)};
 	text-transform: capitalize;
 	margin: 0;
 `
@@ -147,9 +147,9 @@ const Tab = styled.div`
 					6,
 			  )}px rgba(50, 50, 50, 0.5)`
 			: ``};
-	border: ${(p: TabProps) => (!p.active ? p.theme.border.default : ``)};
+	border: ${(p: TabProps) => (!p.active ? p.theme.gwen.border.default(p.theme.scale) : ``)};
 	cursor: ${(p: TabProps) => (!p.active ? `pointer` : ``)};
 	flex: 1;
 	overflow: hidden;
-	background-color: ${(p: TabProps) => (p.active ? p.theme.colors.background.default : p.theme.colors.background.header)};
+	background-color: ${(p: TabProps) => (p.active ? p.theme.gwen.colors.background.default : p.theme.gwen.colors.background.header)};
 `

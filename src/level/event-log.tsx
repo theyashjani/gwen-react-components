@@ -106,17 +106,17 @@ export class EventLog extends React.Component<Props, State> {
 const Wrapper = styled.div`
 	position: relative;
 	height: 100%;
-	background: ${(p) => p.theme.colors.background.default};
+	background: ${(p) => p.theme.gwen.colors.background.default};
 `
 const EventLogWrapper = styled.div`
 	display: block;
 	font-size: ${(p) => p.theme.proportions(15)}px;
 	margin: ${(p) => p.theme.proportions(10)}px;
-	box-shadow: ${(p) => p.theme.boxShadow.default};
+	box-shadow: ${(p) => p.theme.gwen.boxShadow.default(p.theme.scale)};
 `
 const EventLogHeader = styled.div`
-	background: ${(p) => p.theme.colors.background.header};
-	border-bottom: ${(p) => p.theme.proportions(1)}px solid ${(p) => p.theme.colors.divider};
+	background: ${(p) => p.theme.gwen.colors.background.header};
+	border-bottom: ${(p) => p.theme.proportions(1)}px solid ${(p) => p.theme.gwen.colors.divider};
 	display: flex;
 	padding: ${(p) => p.theme.proportions(8)}px ${(p) => p.theme.proportions(12)}px;
 	line-height: ${(p) => p.theme.proportions(16)}px;
@@ -132,7 +132,7 @@ const EventLogHeader = styled.div`
 		}
 		&:nth-child(2) {
 			text-align: right;
-			color: ${(p) => p.theme.colors.text.secondary};
+			color: ${(p) => p.theme.gwen.colors.text.secondary};
 			flex: 1;
 		}
 	}
@@ -151,19 +151,19 @@ const EventLogBody = styled.div`
 		}
 		return 0
 	}}px;
-	background: ${(p) => p.theme.colors.background.default};
-	border-bottom: ${(p: ExpandedType) => (p.expanded ? p.theme.proportions(1) : 0)}px solid ${(p) => p.theme.colors.divider};
+	background: ${(p) => p.theme.gwen.colors.background.default};
+	border-bottom: ${(p: ExpandedType) => (p.expanded ? p.theme.proportions(1) : 0)}px solid ${(p) => p.theme.gwen.colors.divider};
 `
 const EventLogBodyDate = styled.div`
-	color: ${(p) => p.theme.colors.text.secondary};
+	color: ${(p) => p.theme.gwen.colors.text.secondary};
 	font-size: ${(p) => p.theme.proportions(14)}px;
 	padding: ${(p) => p.theme.proportions(8)}px ${(p) => p.theme.proportions(12)}px;
 	text-align: center;
 `
 const EventLogExpand = styled.div`
 	height: ${(p: ExpandedType) => p.theme.proportions(20)}px;
-	background: ${(p) => p.theme.colors.background.header};
-	color: ${(p) => p.theme.colors.secondary};
+	background: ${(p) => p.theme.gwen.colors.background.header};
+	color: ${(p) => p.theme.gwen.colors.secondary};
 	transform: ${(p: ExpandedType) => (p.expanded ? "rotate(180deg)" : "")};
 	cursor: pointer;
 	text-align: center;

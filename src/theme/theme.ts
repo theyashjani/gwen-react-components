@@ -3,10 +3,14 @@ import { darkTheme } from "./dark"
 import { lightTheme } from "./light"
 import { ThemeOptions } from "./options"
 
-/* eslint-disable import/no-mutable-exports */
-export let theme: DefaultTheme
+export const GwenTheme = new (class GwenTheme {
+	gwen: DefaultTheme["gwen"]
 
-export const GwenTheme = (options: ThemeOptions): DefaultTheme => {
-	theme = options.theme && options.theme === "dark" ? darkTheme(options) : lightTheme(options)
-	return theme
-}
+	constructor() {
+		this.gwen = darkTheme({})
+	}
+
+	init(options: ThemeOptions) {
+		this.gwen = options.theme === "light" ? lightTheme(options) : darkTheme(options)
+	}
+})()

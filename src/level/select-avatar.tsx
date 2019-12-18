@@ -1,6 +1,6 @@
 import React from "react"
 import { AutoSizer, List, ScrollParams } from "react-virtualized"
-import styled from "styled-components"
+import styled, { DefaultTheme } from "styled-components"
 import { ScrollArrows } from "../components/scroll-arrows"
 import { Check } from "../icons/check"
 import { LevelAvatarData } from "../types/level"
@@ -41,7 +41,7 @@ export class SelectAvatar extends React.PureComponent<SelectAvatarProps, State> 
 										key={item.index}
 										style={{ ...item.style, padding: "15px", display: "flex", alignItems: "center", flexDirection: "column", flexWrap: "wrap" }}
 									>
-										<Avatar onClick={() => this.props.select(avatar)} className={avatar.id === this.props.current ? "selected" : ""}>
+										<Avatar scale={this.props.scale} onClick={() => this.props.select(avatar)} className={avatar.id === this.props.current ? "selected" : ""}>
 											<img src={avatar.url} alt="avatar" />
 											{avatar.id === this.props.current && (
 												<AvatarCheck>
@@ -50,7 +50,11 @@ export class SelectAvatar extends React.PureComponent<SelectAvatarProps, State> 
 											)}
 										</Avatar>
 										{avatar2 ? (
-											<Avatar onClick={() => this.props.select(avatar2)} className={avatar2.id === this.props.current ? "selected" : ""}>
+											<Avatar
+												scale={this.props.scale}
+												onClick={() => this.props.select(avatar2)}
+												className={avatar2.id === this.props.current ? "selected" : ""}
+											>
 												<img src={avatar2.url} alt="avatar" />
 												{avatar2.id === this.props.current && (
 													<AvatarCheck>
@@ -72,17 +76,22 @@ export class SelectAvatar extends React.PureComponent<SelectAvatarProps, State> 
 	}
 }
 
+interface ScaleProps {
+	scale: number
+	theme: DefaultTheme
+}
+
 const Avatar = styled.div`
 	position: relative;
 	width: ${(p) => `calc(50% - ${p.theme.proportions(30)}px)`};
 	max-width: ${(p) => p.theme.proportions(156)}px;
 	height: ${(p) => p.theme.proportions(156)}px;
 
-	border: ${(p) => p.theme.proportions(10)}px solid ${(p) => p.theme.colors.background.backdrop};
+	border: ${(p) => p.theme.proportions(10)}px solid ${(p) => p.theme.gwen.colors.background.backdrop};
 	border-radius: 100%;
 	transition: 0.2s ease-in-out;
 	cursor: pointer;
-	box-shadow: ${(p) => p.theme.boxShadow.default};
+	box-shadow: ${(p: ScaleProps) => p.theme.gwen.boxShadow.default(p.scale)};
 	margin: 0 ${(p) => p.theme.proportions(15)}px;
 	img {
 		display: block;
@@ -90,7 +99,7 @@ const Avatar = styled.div`
 		width: 100%;
 	}
 	&:hover {
-		border-color: ${(p) => p.theme.colors.background.header};
+		border-color: ${(p) => p.theme.gwen.colors.background.header};
 	}
 `
 const EmptyAvatar = styled.div`
@@ -104,7 +113,7 @@ const AvatarCheck = styled.div`
 	right: -0px;
 	width: ${(p) => p.theme.proportions(35)}px;
 	height: ${(p) => p.theme.proportions(35)}px;
-	background: ${(p) => p.theme.colors.background.header};
+	background: ${(p) => p.theme.gwen.colors.background.header};
 	font-size: ${(p) => p.theme.proportions(25)}px;
 	padding: ${(p) => p.theme.proportions(4)}px;
 	border-radius: 100%;
@@ -119,6 +128,6 @@ const AvatarCheck = styled.div`
 
 const Checkmark = styled(Check)`
 	path {
-		fill: ${(p) => p.theme.colors.success};
+		fill: ${(p) => p.theme.gwen.colors.success};
 	}
 `

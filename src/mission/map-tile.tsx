@@ -63,7 +63,7 @@ const MissionPath = styled.svg`
 	display: block;
 	position: relative;
 	z-index: 3;
-	filter: ${(p) => `drop-shadow(0 2px 2px ${p.theme.boxShadow.color})`};
+	filter: ${(p) => `drop-shadow(0 2px 2px ${p.theme.gwen.boxShadow.color})`};
 	overflow: visible;
 `
 
@@ -82,7 +82,7 @@ const Dot = styled.div`
 	border-radius: 50%;
 	background: ${(props: DotType) => {
 		if (!props.disabled) {
-			return props.current ? props.theme.colors.primary : "#545454"
+			return props.current ? props.theme.gwen.colors.primary : "#545454"
 		}
 		return "#fff"
 	}};
@@ -92,9 +92,9 @@ const Dot = styled.div`
 	font-size: ${(props: DotType) => props.size / 2.5}px;
 	line-height: ${(props: DotType) => props.size}px;
 	color: ${(props: DotType) => (!props.disabled ? "#fff" : "#545454")};
-	box-shadow: ${(props: DotType) => props.theme.boxShadow.default};
+	box-shadow: ${(props: DotType) => props.theme.gwen.boxShadow.default(props.theme.scale)};
 	cursor: ${(props: DotType) => (props.disabled ? "default" : "pointer")};
-	${(props: DotType) => (!props.disabled ? `&:hover { background: ${props.theme.colors.primary}; color: #fff; }` : "")};
+	${(props: DotType) => (!props.disabled ? `&:hover { background: ${props.theme.gwen.colors.primary}; color: #fff; }` : "")};
 `
 const Tile = styled.img`
 	position: absolute;
