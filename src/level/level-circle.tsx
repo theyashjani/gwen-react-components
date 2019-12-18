@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { DefaultTheme } from "styled-components"
 import { Edit } from "../icons/edit"
-import { GwenTheme } from "../theme"
+import { theme } from "../theme"
 import { LevelAvatarData, LevelData } from "../types/level"
 import { LevelBadge } from "./level-badge"
 import { LevelTranslation } from "./translations"
@@ -57,17 +57,11 @@ export class LevelCircle extends React.PureComponent<Props, State> {
 				<LevelMeter width={`${this.props.size}px`} height={`${this.props.size}px`} viewBox="-50 -50 100 100">
 					<defs>
 						<linearGradient id="gradient" gradientTransform="rotate(45)">
-							<stop
-								offset="0%"
-								stopColor={this.props.avatar && this.props.avatar.colors ? this.props.avatar.colors.shirt : GwenTheme.gwen.colors.text.primary}
-							/>
-							<stop
-								offset="100%"
-								stopColor={this.props.avatar && this.props.avatar.colors ? this.props.avatar.colors.background : GwenTheme.gwen.colors.text.primary}
-							/>
+							<stop offset="0%" stopColor={this.props.avatar && this.props.avatar.colors ? this.props.avatar.colors.shirt : theme.colors.text.primary} />
+							<stop offset="100%" stopColor={this.props.avatar && this.props.avatar.colors ? this.props.avatar.colors.background : theme.colors.text.primary} />
 						</linearGradient>
 					</defs>
-					<circle r={radius} fill="none" strokeWidth="20" stroke={GwenTheme.gwen.colors.inactive} />
+					<circle r={radius} fill="none" strokeWidth="20" stroke={theme.colors.inactive} />
 					<circle
 						transform={`rotate(${180 + missing * 180})`}
 						r={radius}
@@ -112,8 +106,8 @@ const LevelPicture = styled.img`
 	width: ${(p: SizeType) => p.size * 0.8}px;
 	height: ${(p: SizeType) => p.size * 0.8}px;
 	border-radius: 100%;
-	border: ${(p: SizeType) => `${p.size * 0.05}px solid ${p.theme.gwen.colors.background.badge}`};
-	box-shadow: ${(p) => p.theme.gwen.boxShadow.large};
+	border: ${(p: SizeType) => `${p.size * 0.05}px solid ${p.theme.colors.background.badge}`};
+	box-shadow: ${(p) => p.theme.boxShadow.large};
 	overflow: hidden;
 `
 const LevelMeter = styled.svg`
@@ -142,18 +136,18 @@ const EditButton = styled.div`
 	height: ${(p: SizeType) => p.size * 0.19}px;
 	width: ${(p: SizeType) => p.size * 0.19}px;
 	border-radius: 100%;
-	background: ${(p) => p.theme.gwen.colors.background.header};
-	box-shadow: ${(p: SizeType) => p.size * 0.0125}px 0 ${(p: SizeType) => p.size * 0.03}px 0 ${(p) => p.theme.gwen.boxShadow.color};
+	background: ${(p) => p.theme.colors.background.header};
+	box-shadow: ${(p: SizeType) => p.size * 0.0125}px 0 ${(p: SizeType) => p.size * 0.03}px 0 ${(p) => p.theme.boxShadow.color};
 
 	> svg {
-		stroke: ${(p) => p.theme.gwen.colors.text.secondary};
-		fill: ${(p) => p.theme.gwen.colors.text.secondary};
+		stroke: ${(p) => p.theme.colors.text.secondary};
+		fill: ${(p) => p.theme.colors.text.secondary};
 	}
 	&:hover {
-		background: ${(p) => p.theme.gwen.colors.text.primary};
+		background: ${(p) => p.theme.colors.text.primary};
 		> svg {
-			stroke: ${(p) => p.theme.gwen.colors.text.success};
-			fill: ${(p) => p.theme.gwen.colors.text.success};
+			stroke: ${(p) => p.theme.colors.text.success};
+			fill: ${(p) => p.theme.colors.text.success};
 		}
 	}
 `

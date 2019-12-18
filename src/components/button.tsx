@@ -42,20 +42,20 @@ const ButtonWrapper = styled.div`
 	font-weight: 600;
 	border-radius: ${(p: ButtonWrapperProps) => p.theme.proportions(8)}px;
 	margin: ${(p: ButtonWrapperProps) => p.theme.proportions(2.4)}px auto 0 auto;
-	box-shadow: ${(p: ButtonWrapperProps) => p.theme.gwen.boxShadow.default};
+	box-shadow: ${(p: ButtonWrapperProps) => p.theme.boxShadow.default};
 	user-select: none;
 	text-align: center;
 	cursor: ${(p: ButtonWrapperProps) => (p.disabled ? "default" : "pointer")};
 	background: ${(p: ButtonWrapperProps) => {
 		if (p.disabled) {
-			return p.theme.gwen.colors.inactive
+			return p.theme.colors.inactive
 		}
-		return p.type === "success" ? p.theme.gwen.colors.button.next : p.theme.gwen.colors.button.default
+		return p.type === "success" ? p.theme.colors.button.next : p.theme.colors.button.default
 	}};
 	opacity: ${(p: ButtonWrapperProps) => (p.disabled ? 0.5 : 1)};
-	color: ${(p: ButtonWrapperProps) => (p.type === "success" ? p.theme.gwen.colors.text.success : p.theme.gwen.colors.text.primary)};
+	color: ${(p: ButtonWrapperProps) => (p.type === "success" ? p.theme.colors.text.success : p.theme.colors.text.primary)};
 	&:hover {
 		background: ${(p: ButtonWrapperProps) =>
-			p.disabled ? p.theme.gwen.colors.inactive : Color.darken(p.type === "success" ? p.theme.gwen.colors.secondary : p.theme.gwen.colors.text.success)};
+			p.disabled ? p.theme.colors.inactive : Color.darken(p.type === "success" ? p.theme.colors.secondary : p.theme.colors.text.success)};
 	}
 `

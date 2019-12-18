@@ -5,7 +5,6 @@ import { Currency } from "../../types/reward"
 interface Props {
 	type: Currency
 	amount?: number
-	size?: number
 	icon?: string
 	description?: string
 }
@@ -25,17 +24,16 @@ export class Reward extends React.PureComponent<Props, State> {
 	}
 
 	render() {
-		const size = this.props.size || 80
 		return (
-			<Wrapper onClick={() => this.easterEgg()} size={size} amount={typeof this.props.amount === "number"}>
+			<Wrapper onClick={() => this.easterEgg()} amount={typeof this.props.amount === "number"}>
 				{typeof this.props.amount === "number" && (
-					<Amount size={size}>
+					<Amount>
 						<span>{this.props.amount}</span>
 					</Amount>
 				)}
-				<Icon size={size} src={this.icon()} alt="icon" />
-				<Description size={size}>{this.props.description}</Description>
-				{this.state.clicks >= 10 && <EasterEgg size={size} />}
+				<Icon src={this.icon()} alt="icon" />
+				<Description>{this.props.description}</Description>
+				{this.state.clicks >= 10 && <EasterEgg />}
 			</Wrapper>
 		)
 	}
@@ -43,27 +41,24 @@ export class Reward extends React.PureComponent<Props, State> {
 
 interface WrapperProps {
 	theme: DefaultTheme
-	size: number
+
 	amount: boolean
 }
 const Wrapper = styled.div`
 	position: relative;
 	margin: auto;
-	margin-top: ${(p: WrapperProps) => (p.amount ? `${p.size * 0.2}px` : "0")};
-	margin-bottom: ${(p: WrapperProps) => p.size * 0.3}px;
+	margin-top: ${(p: WrapperProps) => (p.amount ? `${p.theme.proportions(16)}px` : "0")};
+	margin-bottom: ${(p: WrapperProps) => p.theme.proportions(24)}px;
 	border-radius: 100%;
-	width: ${(p: WrapperProps) => p.size}px;
-	height: ${(p: WrapperProps) => p.size}px;
+	width: ${(p: WrapperProps) => p.theme.proportions(80)}px;
+	height: ${(p: WrapperProps) => p.theme.proportions(80)}px;
 	user-select: none;
 `
-interface SizeProps {
-	theme: DefaultTheme
-	size: number
-}
+
 const Icon = styled.img`
 	display: block;
-	width: ${(props: SizeProps) => props.theme.proportions(props.size)}px;
-	height: ${(props: SizeProps) => props.theme.proportions(props.size)}px;
+	width: ${(props) => props.theme.proportions(80)}px;
+	height: ${(props) => props.theme.proportions(80)}px;
 	object-fit: contain;
 `
 const Amount = styled.div`
@@ -74,21 +69,21 @@ const Amount = styled.div`
 	span {
 		display: inline-block;
 		margin: auto;
-		background: ${(p) => p.theme.gwen.colors.background.badge};
-		font-size: ${(p: SizeProps) => p.size * 0.175}px;
-		line-height: ${(p: SizeProps) => p.size * 0.2}px;
-		padding: ${(p: SizeProps) => p.size * 0.075}px ${(p) => p.size * 0.125}px;
-		border-radius: ${(p: SizeProps) => p.size * 0.075}px;
-		box-shadow: ${(p) => p.theme.gwen.boxShadow.default};
+		background: ${(p) => p.theme.colors.background.badge};
+		font-size: ${(p) => p.theme.proportions(14)}px;
+		line-height: ${(p) => p.theme.proportions(16)}px;
+		padding: ${(p) => p.theme.proportions(6)}px ${(p) => p.theme.proportions(16)}px;
+		border-radius: ${(p) => p.theme.proportions(6)}px;
+		box-shadow: ${(p) => p.theme.boxShadow.default};
 	}
 `
 const Description = styled.div`
 	display: flex;
-	color: ${(p) => p.theme.gwen.colors.text.secondary};
-	font-size: ${(p: SizeProps) => p.size * 0.175}px;
-	line-height: ${(p: SizeProps) => p.size * 0.175}px;
+	color: ${(p) => p.theme.colors.text.secondary};
+	font-size: ${(p) => p.theme.proportions(14)}px;
+	line-height: ${(p) => p.theme.proportions(14)}px;
 	font-weight: 400;
-	margin-top: ${(p: SizeProps) => p.size * 0.075}px;
+	margin-top: ${(p) => p.theme.proportions(6)}px;
 	text-transform: capitalize;
 	white-space: nowrap;
 	justify-content: center;
@@ -110,15 +105,15 @@ const EasterEgg = styled.i`
 		width: 0;
 		height: 0;
 		animation: eatAnimation 1s infinite;
-		border-left: ${(p: SizeProps) => p.size / 2}px solid transparent;
+		border-left: ${(p) => p.theme.proportions(40)}px solid transparent;
 	}
 	&:before {
 		top: 50%;
-		border-top: 0 solid ${(p) => p.theme.gwen.colors.background.default};
+		border-top: 0 solid ${(p) => p.theme.colors.background.default};
 	}
 	&:after {
 		bottom: 50%;
-		border-bottom: 0 solid ${(p) => p.theme.gwen.colors.background.default};
+		border-bottom: 0 solid ${(p) => p.theme.colors.background.default};
 	}
 	@keyframes eatAnimation {
 		0% {
@@ -126,8 +121,8 @@ const EasterEgg = styled.i`
 			border-bottom-width: 0;
 		}
 		50% {
-			border-top-width: ${(p: SizeProps) => p.size / 2}px;
-			border-bottom-width: ${(p: SizeProps) => p.size / 2}px;
+			border-top-width: ${(p) => p.theme.proportions(40)}px;
+			border-bottom-width: ${(p) => p.theme.proportions(40)}px;
 		}
 		100% {
 			border-top-width: 0;

@@ -37,15 +37,15 @@ const TabsHeader = styled.div`
 	width: 100%;
 	height: ${(p) => p.theme.proportions(50)}px;
 	display: flex;
-	border-bottom: ${(p) => p.theme.proportions(4)}px solid ${(p) => p.theme.gwen.colors.primary};
+	border-bottom: ${(p) => p.theme.proportions(4)}px solid ${(p) => p.theme.colors.primary};
 	overflow: hidden;
 	> div {
 		flex: 1;
 		display: flex;
 		align-items: center;
 		cursor: pointer;
-		background: ${(p) => p.theme.gwen.colors.background.header};
-		color: ${(p) => p.theme.gwen.colors.text.secondary};
+		background: ${(p) => p.theme.colors.background.header};
+		color: ${(p) => p.theme.colors.text.secondary};
 		text-align: center;
 		&:nth-last-of-type(1) {
 			> div {
@@ -55,11 +55,11 @@ const TabsHeader = styled.div`
 		> div {
 			width: 100%;
 			line-height: ${(p) => p.theme.proportions(30)}px;
-			border-right: ${(p) => p.theme.gwen.border.default};
+			border-right: ${(p) => p.theme.border.default};
 		}
 		&.active {
-			background: ${(p) => p.theme.gwen.colors.primary};
-			color: ${(p) => p.theme.gwen.colors.background.header};
+			background: ${(p) => p.theme.colors.primary};
+			color: ${(p) => p.theme.colors.background.header};
 			margin-left: -${(p) => p.theme.proportions(1)}px;
 
 			> div {

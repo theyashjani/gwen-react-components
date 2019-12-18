@@ -10,7 +10,6 @@ type Props = {
 	mission: MissionData
 	translations: MissionTranslation
 	rewardIcons?: RewardIcons
-	scale: number
 }
 
 export class MissionDetails extends React.PureComponent<Props> {
@@ -29,12 +28,7 @@ export class MissionDetails extends React.PureComponent<Props> {
 						<Objective {...objective} />
 					</ObjectiveWrapper>
 				))}
-				<Rewards
-					scale={this.props.scale}
-					rewards={[{ currency: "xp", amount: mission.reward }]}
-					translations={this.props.translations}
-					icons={this.props.rewardIcons}
-				/>
+				<Rewards rewards={this.props.mission.rewards} translations={this.props.translations} icons={this.props.rewardIcons} />
 			</MissionDiv>
 		)
 	}
@@ -47,7 +41,7 @@ const Title = styled.h4`
 	line-height: ${(p) => p.theme.proportions(35)}px;
 	font-size: ${(p) => p.theme.proportions(16)}px;
 	font-weight: 400;
-	border-bottom: ${(p) => p.theme.gwen.border.default};
+	border-bottom: ${(p) => p.theme.border.default};
 	margin: 0;
 	margin-bottom: ${(p) => p.theme.proportions(8)}px;
 	text-transform: uppercase;

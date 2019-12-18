@@ -88,13 +88,13 @@ const Wrapper = styled.div`
 
 const TopWrapper = styled.div`
 	width: 100%;
-	box-shadow: ${(p) => p.theme.gwen.boxShadow.default};
+	box-shadow: ${(p) => p.theme.boxShadow.default};
 	margin-bottom: ${(p) => p.theme.proportions(8)}px;
 `
 
 const BottomWrapper = styled.div`
 	flex: 1;
-	box-shadow: ${(p) => p.theme.gwen.boxShadow.large};
+	box-shadow: ${(p) => p.theme.boxShadow.large};
 `
 
 const PlayerScoreWrapper = styled.div`
@@ -103,10 +103,10 @@ const PlayerScoreWrapper = styled.div`
 	width: 100%;
 	height: ${(p) => p.theme.proportions(73)}px;
 	padding: ${(p) => p.theme.proportions(8)}px;
-	background: ${(p) => p.theme.gwen.colors.background.header};
-	border-bottom: ${(p) => p.theme.gwen.border.default};
+	background: ${(p) => p.theme.colors.background.header};
+	border-bottom: ${(p) => p.theme.border.default};
 	> b {
-		color: ${(p) => p.theme.gwen.colors.text.secondary};
+		color: ${(p) => p.theme.colors.text.secondary};
 		margin-left: ${(p) => p.theme.proportions(12)}px;
 	}
 `
@@ -118,15 +118,15 @@ const PlayerName = styled.div`
 	align-items: center;
 	height: ${(p) => p.theme.proportions(40)}px;
 	padding: 0 ${(p) => p.theme.proportions(8)}px;
-	border: ${(p) => p.theme.gwen.border.textInput};
-	background: ${(p) => p.theme.gwen.colors.background.header};
+	border: ${(p) => p.theme.border.textInput};
+	background: ${(p) => p.theme.colors.background.header};
 	margin: 0 ${(p) => p.theme.proportions(12)}px 0 ${(p) => p.theme.proportions(20)}px;
 	flex: 1;
 	> span {
 		flex: 2;
 		padding-left: 10px;
 		text-align: center;
-		border-left: ${(p) => p.theme.gwen.border.textInput};
+		border-left: ${(p) => p.theme.border.textInput};
 		line-height: ${(p) => p.theme.proportions(40)}px;
 	}
 `
@@ -137,14 +137,14 @@ const EditButton = styled.div`
 	padding: ${(p) => p.theme.proportions(10)}px;
 	cursor: pointer;
 	> svg {
-		stroke: ${(p) => p.theme.gwen.colors.text.secondary};
-		fill: ${(p) => p.theme.gwen.colors.text.secondary};
+		stroke: ${(p) => p.theme.colors.text.secondary};
+		fill: ${(p) => p.theme.colors.text.secondary};
 	}
 
 	&:hover {
 		> svg {
-			stroke: ${(p) => p.theme.gwen.colors.text.primary};
-			fill: ${(p) => p.theme.gwen.colors.text.primary};
+			stroke: ${(p) => p.theme.colors.text.primary};
+			fill: ${(p) => p.theme.colors.text.primary};
 		}
 	}
 `
@@ -157,7 +157,7 @@ const TimeToggle = styled.div`
 	position: relative;
 	height: ${(p) => p.theme.proportions(40)}px;
 	width: 100%;
-	background: ${(p) => p.theme.gwen.colors.background.header};
+	background: ${(p) => p.theme.colors.background.header};
 `
 
 interface ToggleTitleProps {
@@ -169,7 +169,7 @@ const TimeToggleTitle = styled.div`
 	display: inline-block;
 	top: 0;
 	line-height: ${(p) => p.theme.proportions(40)}px;
-	color: ${(p: ToggleTitleProps) => (p.active ? p.theme.gwen.colors.text.primary : p.theme.gwen.colors.text.secondary)};
+	color: ${(p: ToggleTitleProps) => (p.active ? p.theme.colors.text.primary : p.theme.colors.text.secondary)};
 	font-weight: 600;
 `
 const TimeToggleTitleLeft = styled(TimeToggleTitle)`
