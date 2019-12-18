@@ -7,6 +7,7 @@ interface Props {
 	amount?: number
 	icon?: string
 	description?: string
+	size?: number
 }
 interface State {
 	clicks: number
@@ -24,16 +25,17 @@ export class Reward extends React.PureComponent<Props, State> {
 	}
 
 	render() {
+		const size = this.props.size || 80
 		return (
-			<Wrapper onClick={() => this.easterEgg()} amount={typeof this.props.amount === "number"}>
+			<Wrapper onClick={() => this.easterEgg()} size={size} amount={typeof this.props.amount === "number"}>
 				{typeof this.props.amount === "number" && (
-					<Amount>
+					<Amount size={size}>
 						<span>{this.props.amount}</span>
 					</Amount>
 				)}
-				<Icon src={this.icon()} alt="icon" />
-				<Description>{this.props.description}</Description>
-				{this.state.clicks >= 10 && <EasterEgg />}
+				<Icon size={size} src={this.icon()} alt="icon" />
+				<Description size={size}>{this.props.description}</Description>
+				{this.state.clicks >= 10 && <EasterEgg size={size} />}
 			</Wrapper>
 		)
 	}
@@ -41,24 +43,28 @@ export class Reward extends React.PureComponent<Props, State> {
 
 interface WrapperProps {
 	theme: DefaultTheme
-
+	size: number
 	amount: boolean
 }
 const Wrapper = styled.div`
 	position: relative;
 	margin: auto;
-	margin-top: ${(p: WrapperProps) => (p.amount ? `${p.theme.proportions(16)}px` : "0")};
-	margin-bottom: ${(p: WrapperProps) => p.theme.proportions(24)}px;
+	margin-top: ${(p: WrapperProps) => (p.amount ? `${p.theme.proportions(p.size * 0.2)}px` : "0")};
+	margin-bottom: ${(p: WrapperProps) => p.theme.proportions(p.size * 0.3)}px;
 	border-radius: 100%;
-	width: ${(p: WrapperProps) => p.theme.proportions(80)}px;
-	height: ${(p: WrapperProps) => p.theme.proportions(80)}px;
+	width: ${(p: WrapperProps) => p.theme.proportions(p.size)}px;
+	height: ${(p: WrapperProps) => p.theme.proportions(p.size)}px;
 	user-select: none;
 `
+interface SizeProps {
+	theme: DefaultTheme
+	size: number
+}
 
 const Icon = styled.img`
 	display: block;
-	width: ${(props) => props.theme.proportions(80)}px;
-	height: ${(props) => props.theme.proportions(80)}px;
+	width: ${(props: SizeProps) => props.theme.proportions(props.size)}px;
+	height: ${(props: SizeProps) => props.theme.proportions(props.size)}px;
 	object-fit: contain;
 `
 const Amount = styled.div`
@@ -70,20 +76,20 @@ const Amount = styled.div`
 		display: inline-block;
 		margin: auto;
 		background: ${(p) => p.theme.colors.background.badge};
-		font-size: ${(p) => p.theme.proportions(14)}px;
-		line-height: ${(p) => p.theme.proportions(16)}px;
-		padding: ${(p) => p.theme.proportions(6)}px ${(p) => p.theme.proportions(16)}px;
-		border-radius: ${(p) => p.theme.proportions(6)}px;
+		font-size: ${(p: SizeProps) => p.theme.proportions(p.size * 0.175)}px;
+		line-height: ${(p: SizeProps) => p.theme.proportions(p.size * 0.2)}px;
+		padding: ${(p: SizeProps) => p.theme.proportions(p.size * 0.075)}px ${(p) => p.theme.proportions(p.size * 0.125)}px;
+		border-radius: ${(p: SizeProps) => p.theme.proportions(p.size * 0.075)}px;
 		box-shadow: ${(p) => p.theme.boxShadow.default};
 	}
 `
 const Description = styled.div`
 	display: flex;
 	color: ${(p) => p.theme.colors.text.secondary};
-	font-size: ${(p) => p.theme.proportions(14)}px;
-	line-height: ${(p) => p.theme.proportions(14)}px;
+	font-size: ${(p: SizeProps) => p.theme.proportions(p.size * 0.175)}px;
+	line-height: ${(p: SizeProps) => p.theme.proportions(p.size * 0.175)}px;
 	font-weight: 400;
-	margin-top: ${(p) => p.theme.proportions(6)}px;
+	margin-top: ${(p: SizeProps) => p.theme.proportions(p.size * 0.075)}px;
 	text-transform: capitalize;
 	white-space: nowrap;
 	justify-content: center;
@@ -105,7 +111,7 @@ const EasterEgg = styled.i`
 		width: 0;
 		height: 0;
 		animation: eatAnimation 1s infinite;
-		border-left: ${(p) => p.theme.proportions(40)}px solid transparent;
+		border-left: ${(p: SizeProps) => p.theme.proportions(p.size * 0.5)}px solid transparent;
 	}
 	&:before {
 		top: 50%;
@@ -121,8 +127,8 @@ const EasterEgg = styled.i`
 			border-bottom-width: 0;
 		}
 		50% {
-			border-top-width: ${(p) => p.theme.proportions(40)}px;
-			border-bottom-width: ${(p) => p.theme.proportions(40)}px;
+			border-top-width: ${(p: SizeProps) => p.theme.proportions(p.size * 0.5)}px;
+			border-bottom-width: ${(p: SizeProps) => p.theme.proportions(p.size * 0.5)}px;
 		}
 		100% {
 			border-top-width: 0;
