@@ -68,7 +68,7 @@ const ObjectiveTitle = styled.h5`
 	text-align: left;
 	overflow: hidden;
 	white-space: nowrap;
-	padding: 0 ${(p) => p.theme.proportions(30)}px 0 ${(p) => p.theme.proportions(8)}px;
+	padding: 0 ${(p) => p.theme.proportions(40)}px 0 ${(p) => p.theme.proportions(8)}px;
 	font-size: ${(p) => p.theme.proportions(16)}px;
 	text-overflow: ellipsis;
 	line-height: ${(p) => p.theme.proportions(45)}px;
