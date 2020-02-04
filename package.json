@@ -1,9 +1,12 @@
 {
 	"name": "@insertcoinab/gwen-react-components",
-	"version": "0.0.44",
+	"version": "0.0.45",
 	"repository": "https://github.com/InsertCoinAB/gwen-react-components",
 	"license": "MIT",
 	"private": false,
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"module": "dist/index.js",
