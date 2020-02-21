@@ -5,14 +5,14 @@ import { Switch } from "../components/switch"
 import { ModuleWrapper } from "../components/wrapper"
 import { Edit } from "../icons/edit"
 import { LeaderboardRow } from "../types/leaderboard"
-import { LeaderboardColumn } from "./column"
+import { LeaderboardUserColumn } from "./column"
 import { LeaderboardList } from "./list"
 import { Tabs } from "./tabs"
 import { LeaderboardTranslation } from "./translations"
 
 export interface LeaderboardModuleProps {
-	columns: LeaderboardColumn[]
-	active: LeaderboardColumn
+	columns: LeaderboardUserColumn[]
+	active: LeaderboardUserColumn
 	leaderboard?: LeaderboardRow[]
 	currentUser?: LeaderboardRow
 	translations: LeaderboardTranslation

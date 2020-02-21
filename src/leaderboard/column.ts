@@ -1,7 +1,8 @@
-export enum LeaderboardColumnEnum {
+export enum LeaderboardUserColumnEnum {
 	xpGained,
 	coinGained,
 	vipcurrencyGained,
+	teamXpGained,
 	levelsGained,
 	missionsCompleted,
 	missionObjectivesCompleted,
@@ -11,4 +12,4 @@ export enum LeaderboardColumnEnum {
 	coinSpent,
 	vipcurrencySpent,
 }
-export type LeaderboardColumn = keyof typeof LeaderboardColumnEnum
+export type LeaderboardUserColumn = keyof typeof LeaderboardUserColumnEnum

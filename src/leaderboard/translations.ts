@@ -1,8 +1,8 @@
 import { GenericTranslation, GenericTranslations } from "../components/translations"
-import { LeaderboardColumn } from "./column"
+import { LeaderboardUserColumn } from "./column"
 
 export type LeaderboardTranslation = GenericTranslation &
-	Record<LeaderboardColumn, string> & {
+	Record<LeaderboardUserColumn, string> & {
 		moduleName: string
 		noHighscore: string
 		nickname: string
@@ -13,7 +13,7 @@ export type LeaderboardTranslation = GenericTranslation &
 		weekly: string
 	}
 
-const ScoreTranslations: Record<LeaderboardColumn, string> = {
+const ScoreTranslations: Record<LeaderboardUserColumn, string> = {
 	achievementTiersCompleted: "Achievement Tiers Completed",
 	achievementsCompleted: "Achievements Completed",
 	coinGained: "Coins Gained",
@@ -25,6 +25,7 @@ const ScoreTranslations: Record<LeaderboardColumn, string> = {
 	vipcurrencyGained: "VIP Currency Gained",
 	vipcurrencySpent: "VIP Currency Spent",
 	xpGained: "XP Gained",
+	teamXpGained: "Team XP Gained",
 }
 
 export const LeaderboardTranslations: LeaderboardTranslation = {
