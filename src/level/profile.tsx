@@ -31,8 +31,10 @@ export class Profile extends React.PureComponent<ProfileProps> {
 				</LevelWrapper>
 				<hr />
 				<SecondaryText>{translations.xpUntilNextLevel}</SecondaryText>
-				<ExperienceLeft>{data ? data.levelXp - data.currentXp : ""}</ExperienceLeft>
-				{data && data.rewards.length > 0 && <Rewards rewards={data.rewards} translations={translations} icons={this.props.rewardIcons} />}
+				<ExperienceLeft>{data ? data.xpRemainingOnCurrentLevel : ""}</ExperienceLeft>
+				{data && data.rewardsOnNextLevelUp.length > 0 && (
+					<Rewards rewards={data.rewardsOnNextLevelUp} translations={translations} icons={this.props.rewardIcons} />
+				)}
 			</Wrapper>
 		)
 	}

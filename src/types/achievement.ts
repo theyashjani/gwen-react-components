@@ -8,8 +8,6 @@ export interface AchievementData {
 	readonly title: string
 	readonly description: string
 	readonly icon?: string
-	readonly completed?: Date
-	readonly rewards: RewardData[]
 	readonly cta?: string
 }
 

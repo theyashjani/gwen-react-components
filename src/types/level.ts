@@ -39,11 +39,10 @@ export interface ModuleLevelUserBehaviorCooldownData {
 }
 
 export type LevelData = {
-	level: number
-	currentXp: number
-	totalXp: number
-	levelXp: number
-	levelUp: boolean
-	log: LevelLog
-	rewards: RewardData[]
+	currentLevel: number
+	xpGainedOnCurrentLevel: number
+	xpRemainingOnCurrentLevel: number
+	xpGainedAllTime: number
+	rewardsOnNextLevelUp: RewardData[]
+	avatar?: LevelAvatarData
 }

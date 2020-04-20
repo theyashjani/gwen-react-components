@@ -25,7 +25,7 @@ export class LevelCircle extends React.PureComponent<Props, State> {
 	state: State = { circleTransition: undefined }
 
 	UNSAFE_componentWillReceiveProps(nextProps: Readonly<Props>) {
-		if (nextProps.data && this.props.data && nextProps.data.levelUp && !this.props.data.levelUp) {
+		if (nextProps.data && this.props.data && nextProps.data.currentLevel > this.props.data.currentLevel) {
 			this.setState({ circleTransition: "full" })
 			setTimeout(() => this.setState({ circleTransition: "empty" }), 1000)
 			setTimeout(() => this.setState({ circleTransition: undefined }), 2000)
@@ -40,8 +40,9 @@ export class LevelCircle extends React.PureComponent<Props, State> {
 		if (!this.props.data) {
 			return 0
 		}
-		const { level, currentXp, levelXp } = this.props.data
-		return level && level > 0 ? (currentXp / levelXp) * 100 : 0
+		const { currentLevel, xpGainedOnCurrentLevel, xpRemainingOnCurrentLevel } = this.props.data
+		const levelXp = xpGainedOnCurrentLevel + xpRemainingOnCurrentLevel
+		return currentLevel && currentLevel > 0 ? (xpRemainingOnCurrentLevel / levelXp) * 100 : 0
 	}
 
 	render() {
@@ -82,7 +83,9 @@ export class LevelCircle extends React.PureComponent<Props, State> {
 				<LevelPicture size={this.props.size} src={this.props.avatar && this.props.avatar.url} />
 				{this.props.badge && (
 					<LevelBadgeWrapper size={this.props.size}>
-						{this.props.data && this.props.data.level && <LevelBadge level={this.props.data.level} size={this.props.size} text={translations.level} />}
+						{this.props.data && this.props.data.currentLevel && (
+							<LevelBadge level={this.props.data.currentLevel} size={this.props.size} text={translations.level} />
+						)}
 					</LevelBadgeWrapper>
 				)}
 				{this.props.selectAvatar && (
