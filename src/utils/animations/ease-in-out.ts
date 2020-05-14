@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const easeInOut = (element: HTMLElement, attribute: string, value: number, duration = 500) => {
 	const el = element
 	el.style.userSelect = "none"

@@ -29,6 +29,7 @@ export class MissionMap extends React.PureComponent<Props, State> {
 			this.tiles = this.tiles || new Tiles(this.props.themes)
 			return this.tiles
 		}
+		// eslint-disable-next-line unicorn/no-useless-undefined
 		return undefined
 	}
 
