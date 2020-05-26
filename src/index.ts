@@ -1,4 +1,5 @@
 export * from "./achievement"
+export * from "./character"
 export * from "./components"
 export * from "./leaderboard"
 export * from "./level"
