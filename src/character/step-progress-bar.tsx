@@ -39,6 +39,7 @@ export const StepProgressBar = (props: Props) => {
 	)
 }
 const Wrapper = styled.div`
+	padding: 10px;
 	display: flex;
 	flex-direction: row;
 	position: relative;
@@ -48,6 +49,7 @@ const Wrapper = styled.div`
 const IconWrapper = styled.div`
 	position: absolute;
 	left: 0;
+	z-index: 1;
 `
 
 const Steps = styled.div`
@@ -65,14 +67,19 @@ interface StepProps {
 
 const Step = (props: StepProps) => {
 	return (
-		<StepWrapper>
-			<StepFiller color={props.color || "#0DC979"} flex={props.progress} />
-			<StepFiller color={props.color || "#C9C9C9"} flex={1 - props.progress} />
+		<StepWrapper color={props.background || "#C9C9C9"}>
+			<StepFiller color={props.color || "#0DC979"} width={Math.floor(props.progress * 100)} />
 		</StepWrapper>
 	)
 }
 
+interface BackgroundProps {
+	color: string
+}
+
 const StepWrapper = styled.div`
+	position: relative;
+	background: ${(props: BackgroundProps) => props.color};
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
@@ -89,10 +96,14 @@ const StepWrapper = styled.div`
 
 interface FillProps {
 	color: string
-	flex: number
+	width: number
 }
 
 const StepFiller = styled.div`
+	position: absolute;
+	left: 0;
+	height: 10px;
 	background: ${(props: FillProps) => props.color};
-	flex: ${(props: FillProps) => props.flex};
+	width: ${(props: FillProps) => props.width}%;
+	transition: width 1s linear;
 `
