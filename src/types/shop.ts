@@ -1,6 +1,15 @@
-import { ModuleType } from "."
+import { ModuleType } from "./module-type"
 
-type ShopCurrency = "coin" | "vip"
+export type ShopCurrency = "coin" | "vip"
+
+export interface ShopData {
+	coins: number
+	totalCoinsEarned?: number
+	vipCurrency?: number
+	vipCurrencyEnabled: boolean
+	totalVipEarned?: number
+	totalVipCurrencyEarned?: number
+}
 
 export interface ModuleShopItem {
 	readonly id: string
